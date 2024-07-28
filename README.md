@@ -319,6 +319,41 @@ A web application that allows you to create configuration diagrams using both mo
 
 <img src="./readme_parts/sample_object_01_01.png" width="300">
 
+- 例（１）画像のみ(中央配置)
+
+<img src="./readme_parts/sample_object_01_02.png" width="300">
+
+オブジェクトの中央に画像(`ec2.png`)を配置し、四角形の線や面の色を透明(`none`)にしています。
+
+```json
+    {
+      "label": "EC2-01",
+      "ns": "EC2",
+      "x": 1050,
+      "y": 330,
+      "w": 40,
+      "h": 40,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr3",
+      "child": [],
+      "line": "none",
+      "imgTL": "NONE",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "ec2.png",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtCE"
+    }
+```
+
+
+
 
 
 
