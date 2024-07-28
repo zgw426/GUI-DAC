@@ -167,7 +167,7 @@ A web application that allows you to create configuration diagrams using both mo
     - none と記載すると線なしになります。
 - imgXX要素について
     - オブジェクトの指定の位置に画像を配置します。
-    - 配置する画像は`parts`フォルダ内の画像ファイルです
+    - 配置できる画像は`parts`フォルダ内の画像ファイルです
     - NONEを指定すると画像なしになります
     - imgTLのTLは、TopLeft=左上 です。
     - TopRight=右上、BottomLeft=左下、といった感じです。
@@ -310,7 +310,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## サンプルで使い方を説明
 
-- サンプルを使い使い方を説明します。
+- サンプルを使い具体的なパラメータの設定方法を紹介します。
 
 ## サンプルを使い【オブジェクト】を説明
 
@@ -419,11 +419,77 @@ A web application that allows you to create configuration diagrams using both mo
     }
 ```
 
+- 例（６）画像のみ
 
+<img src="./readme_parts/sample_object_01_05.png" width="300">
+
+画像のみ（テキストなし）のオブジェクトを作成することもできます。
+`ns`要素に値を `""` とするとテキストなしになります。
+
+```json
+    {
+      "label": "EC2-06",
+      "ns": "",
+      "x": 1210,
+      "y": 1030,
+      "w": 80,
+      "h": 80,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr3",
+      "child": [],
+      "line": "none",
+      "imgTL": "NONE",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "ec2.png",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 2,
+      "txtPosition": "txtCE"
+    }
+```
 
 ## サンプルを使い【接続線】を説明
 
 - サンプル`samples/03_接続線サンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
+- このサンプルをGUI-DACで開くとこのような構成図が描画されます。
+
+<img src="./readme_parts/sample_object_02_01.png" width="300">
+
+
+
+- 例（１）接続線（破線）
+
+<img src="./readme_parts/sample_object_02_02.png" width="300">
+
+2つのオブジェクトの接続線を引くことができます。
+
+```json
+    {
+      "id": "n01-01",
+      "color": "#a489F0",
+      "opa": 1,
+      "aline": 2,
+      "cirSize": 0.8,
+      "angle": 0,
+      "lineGap": "3,3",
+      "cirStrokeWidth": 0.05,
+      "conns": [
+        "vpeer-01-01",
+        "vpeer-01-02"
+      ]
+    }
+```
+
+以下のように、接続されたオブジェクトを移動すると接続線も移動します。
+
+<img src="./readme_parts/sample_object_02_03.png" width="300">
+
+
 
 
 
@@ -431,7 +497,9 @@ A web application that allows you to create configuration diagrams using both mo
 
 - サンプル`samples/04_押し出しサンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
 
+- このサンプルをGUI-DACで開くとこのような構成図が描画されます。
 
+<img src="./readme_parts/sample_object_03_01.png" width="300">
 
 
 
