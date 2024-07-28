@@ -72,7 +72,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 - コードでオブジェクトを追加し、マウスで図を移動する。これが基本的な操作方法です。
 
-### 1.GUI-DACアプリの画面説明
+### GUI-DACアプリの画面説明
 
 #### コード(Code)ボタン
 
@@ -98,7 +98,7 @@ A web application that allows you to create configuration diagrams using both mo
 - 保存したデータは、`ファイルを選択`ボタンでGUI-DACに読み込むことができます。
 
 
-### 2.オブジェクトについて
+### オブジェクトについて
 
 - GUI-DACでは、1つの四角形とそれに付随する画像やテキストを1つのオブジェクトとして扱います。
 - そのためGUI-DACで構成図をつくる場合は、オブジェクトの作り方を理解する必要があります。
@@ -198,12 +198,11 @@ A web application that allows you to create configuration diagrams using both mo
 #### オブジェクトのサンプルファイル
 
 - サンプルはこちらにあります。
+    - `samples/02_オブジェクトサンプル_rule2024-07-21.json`
 
 
 
-
-
-### 4.接続線
+### 接続線
 
 - GUI-DACでは、オブジェクトをつなぐ線を描画できます。
 - この線を線オブジェクトといいます。
@@ -260,9 +259,9 @@ A web application that allows you to create configuration diagrams using both mo
 #### 接続線のサンプルファイル
 
 - サンプルはこちらにあります。
+    - `samples/03_接続線サンプル_rule2024-07-21.json`
 
-
-### 3.複数オブジェクトの移動について
+### 複数オブジェクトの移動について
 
 - GUI-DACでの複数のオブジェクトの移動について説明します。
 - 複数のオブジェクトをまとめて移動する場合はマウス操作が便利です。
@@ -301,6 +300,37 @@ A web application that allows you to create configuration diagrams using both mo
     - 衝突するオブジェクトが`child-layers`要素に含まれる
         - 移動するオブジェクト、衝突するオブジェクトについて、移動するオブジェクトの`child-layers`要素に衝突するオブジェクトの`group`値がある場合、押し出しが発生します。
 
+#### 押し出しのサンプルファイル
+
+- サンプルはこちらにあります。
+    - `samples/04_押し出しサンプル_rule2024-07-21.json`
+
+
+
+
+## サンプルで使い方を説明
+
+- サンプルを使い使い方を説明します。
+
+## サンプルを使い【オブジェクト】を説明
+
+- サンプル`samples/02_オブジェクトサンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
+- このサンプルをGUI-DACで開くとこのような構成図が描画されます。
+
+<img src="./readme_parts/sample_object_01_01.png" width="300">
+
+
+
+
+## サンプルを使い【接続線】を説明
+
+- サンプル`samples/03_接続線サンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
+
+
+
+## サンプルを【押し出し】を説明
+
+- サンプル`samples/04_押し出しサンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
 
 
 
