@@ -303,16 +303,17 @@ A web application that allows you to create configuration diagrams using both mo
 #### 押し出しのサンプルファイル
 
 - サンプルはこちらにあります。
-    - `samples/04_押し出しサンプル_rule2024-07-21.json`
+    - `samples/04_押し出し_移動サンプル_rule2024-07-21.json`
 
 
+-----------------------
 
 
 ## サンプルで使い方を説明
 
 - サンプルを使い具体的なパラメータの設定方法を紹介します。
 
-## サンプルを使い【オブジェクト】を説明
+## サンプルで使い【オブジェクト】を説明
 
 - サンプル`samples/02_オブジェクトサンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
@@ -453,7 +454,7 @@ A web application that allows you to create configuration diagrams using both mo
     }
 ```
 
-## サンプルを使い【接続線】を説明
+## サンプルで使い【接続線】を説明
 
 - サンプル`samples/03_接続線サンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
@@ -597,7 +598,7 @@ A web application that allows you to create configuration diagrams using both mo
 ```
 
 
-`angle`要素の値は、以下の図で示すところの角度で単位はラジアンです。
+`angle`要素の値は、以下の図で示すところの角度であり、単位はラジアンです。
 
 <img src="./readme_parts/sample_object_02_08.png" width="300">
 
@@ -608,29 +609,30 @@ A web application that allows you to create configuration diagrams using both mo
 
 
 
+## サンプルで【押し出し】を説明
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-## サンプルを【押し出し】を説明
-
-- サンプル`samples/04_押し出しサンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
-
+- サンプル`samples/04_押し出し_移動サンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
 
 <img src="./readme_parts/sample_object_03_01.png" width="300">
 
 
+- オブジェクト①を移動してオブジェクト③に衝突させると押し出しが発生します
+
+
+
+
+- オブジェクト③を移動してオブジェクト①に衝突させると押し出しが発生しません
+
+- オブジェクト②を移動してオブジェクト③に衝突させると押し出しが発生しません
+
+- オブジェクト③を移動してオブジェクト②に衝突させると押し出しが発生しません
+
+
+
+- オブジェクト③がオブジェクト①の中にある場合に、オブジェクト①を移動するとオブジェクト③も移動する
+
+- オブジェクト③がオブジェクト②の中にある場合に、オブジェクト②を移動してもオブジェクト③は移動しない
 
 
 
