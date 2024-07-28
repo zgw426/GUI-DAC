@@ -491,6 +491,125 @@ A web application that allows you to create configuration diagrams using both mo
 
 
 
+- 例（３）３つの接続
+
+<img src="./readme_parts/sample_object_02_04.png" width="300">
+
+3つのオブジェクトを接続することもできます。`conns`要素にオブジェクトを設定すれば、いくつでも接続できます。
+
+```json
+    {
+      "id": "n03-01",
+      "color": "#5690BB",
+      "opa": 1,
+      "aline": 4,
+      "cirSize": 0.8,
+      "angle": 0,
+      "lineGap": "3,0",
+      "cirStrokeWidth": 0.2,
+      "conns": [
+        "vpeer-03-01",
+        "vpeer-03-02",
+        "vpeer-03-03"
+      ]
+    }
+```
+
+- 例（４）接続線を分ける
+
+<img src="./readme_parts/sample_object_02_05.png" width="300">
+
+オブジェクトAとBの接続と、オブジェクトAとCの接続を分けたい場合は2つの接続線を作成します。
+
+
+```json
+    {
+      "id": "n04-01",
+      "color": "#590B6B",
+      "opa": 1,
+      "aline": 4,
+      "cirSize": 0.8,
+      "angle": 0,
+      "lineGap": "3,0",
+      "cirStrokeWidth": 0.2,
+      "conns": [
+        "vpeer-04-01",
+        "vpeer-04-02"
+      ]
+    },
+    {
+      "id": "n04-02",
+      "color": "green",
+      "opa": 1,
+      "aline": 2,
+      "cirSize": 1,
+      "angle": 0,
+      "lineGap": "3,2",
+      "cirStrokeWidth": 0.1,
+      "conns": [
+        "vpeer-04-01",
+        "vpeer-04-03"
+      ]
+    }
+```
+
+
+- 例（５）接続線（重なり軽減）
+
+<img src="./readme_parts/sample_object_02_06.png" width="300">
+
+同じ経路を通る異なる接続線について、それら接続線の重なりを軽減します。
+これはそれぞれの接続線の `angle`要素の値を異なる値にしています。
+
+```json
+    {
+      "id": "n05-02",
+      "color": "red",
+      "opa": 0.6,
+      "aline": 2,
+      "cirSize": 0.8,
+      "angle": 10,
+      "lineGap": "3,0",
+      "cirStrokeWidth": 0.1,
+      "conns": [
+        "ec2-05-01",
+        "vpeer-05-01",
+        "vpeer-05-02",
+        "ec2-05-02"
+      ]
+    },
+    {
+      "id": "n05-03",
+      "color": "blue",
+      "opa": 0.8,
+      "aline": 2,
+      "cirSize": 0.6,
+      "angle": -10,
+      "lineGap": "3,1",
+      "cirStrokeWidth": 0.1,
+      "conns": [
+        "ec2-05-03",
+        "vpeer-05-01",
+        "vpeer-05-02",
+        "ec2-05-04"
+      ]
+    }
+```
+
+`angle`要素の値を同じ値 (`0`)にするとこのようになります。
+
+<img src="./readme_parts/sample_object_02_07.png" width="300">
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## サンプルを【押し出し】を説明
@@ -500,6 +619,10 @@ A web application that allows you to create configuration diagrams using both mo
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
 
 <img src="./readme_parts/sample_object_03_01.png" width="300">
+
+
+
+
 
 
 
