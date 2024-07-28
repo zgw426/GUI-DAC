@@ -596,9 +596,19 @@ A web application that allows you to create configuration diagrams using both mo
     }
 ```
 
-`angle`要素の値を同じ値 (`0`)にするとこのようになります。
+
+`angle`要素の値は、以下の図で示すところの角度で単位はラジアンです。
+
+<img src="./readme_parts/sample_object_02_08.png" width="300">
+
+
+例えば`angle`要素の値を同じ値 (`0`)にするとこのように接続線の重なる箇所が増えます。
 
 <img src="./readme_parts/sample_object_02_07.png" width="300">
+
+
+
+
 
 
 
