@@ -352,8 +352,72 @@ A web application that allows you to create configuration diagrams using both mo
     }
 ```
 
+- 例（３）画像を全てに配置
 
+<img src="./readme_parts/sample_object_01_03.png" width="300">
 
+オブジェクトに設定できる全てのポジションに画像を配置するとこのようになります。
+コードをみると imgXXの全てに画像ファイル(xxx.png)を指定していることが分かります。
+
+```json
+    {
+      "label": "EC2-03",
+      "ns": "EC2",
+      "x": 560,
+      "y": 890,
+      "w": 200,
+      "h": 200,
+      "color": "#899F9F",
+      "opacity": "0.6",
+      "group": "gr3",
+      "child": [],
+      "line": "none",
+      "imgTL": "ec2.png",
+      "imgTR": "sBlack.png",
+      "imgBL": "sBlue.png",
+      "imgBR": "sGreen.png",
+      "imgCE": "sOrange.png",
+      "imgCL": "sRed.png",
+      "imgCR": "sBlack.png",
+      "imgCT": "sBlue.png",
+      "imgCB": "sGreen.png",
+      "imgSize": 1,
+      "txtPosition": "txtTL"
+    }
+```
+
+- 例（５）画像なし
+
+<img src="./readme_parts/sample_object_01_04.png" width="300">
+
+画像なしのオブジェクトを作成することもできます。
+
+```json
+    {
+      "label": "SOMETHING-01",
+      "ns": "画像なし",
+      "x": 1090,
+      "y": 580,
+      "w": 140,
+      "h": 140,
+      "color": "yellow",
+      "opacity": "1.0",
+      "group": "gr3",
+      "child": [],
+      "line": "#000000",
+      "imgTL": "NONE",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 3,
+      "txtPosition": "txtTL"
+    }
+```
 
 
 
