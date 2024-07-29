@@ -312,9 +312,11 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## コードについて
 
+- 構成図の情報はJSONファイルで管理されています。
+- ここではJSONの構成について説明します。
+
 ### コードの基本構成
 
-- 構成図の情報はJSONファイルで管理されています。
 - オブジェクトの情報は`objs`要素に記載されています。
 - 接続線の情報は`connects`要素に記載されています。
 - (`rule`要素は現在使用していません)
@@ -335,13 +337,13 @@ A web application that allows you to create configuration diagrams using both mo
   }
 ```
 
-### キャンバスのみ
+### キャンバスという特大オブジェクトについて
 
 - 特大のオブジェクトをキャンバスと呼称しています。
 - 最初に、このキャンバスを配置することをオススメします。
-  - これは、キャンバスを配置することにより、構成図全体を移動することができるためです。
-- キャンバスの`group`要素の値は、一意にしてください。
-  - `group`要素の値がキャンバスと同じオブジェクトがあると、そのオブジェクトはキャンバスの外に押し出される、意図した場所に配置できないためです。
+  - キャンバスを配置することにより、構成図全体をマウスドラッグで移動できるためです。
+- キャンバスの`group`要素の値は一意にしてください。
+  - `group`要素の値がキャンバスと同じオブジェクトは、キャンバスの外に押し出され、意図した場所に配置できないためです。
 - キャンバスの`child-layers`要素には、全オブジェクトのグループ名(`group`)を記載してください。
   - これにより、構成図全体の移動が可能になります。
   - 存在しないグループ名を記載してもエラーは発生しません。
@@ -390,6 +392,9 @@ A web application that allows you to create configuration diagrams using both mo
   }
 ```
 
+### オブジェクトの描画順序について
+
+オブジェクトは
 
 
 
@@ -694,14 +699,17 @@ A web application that allows you to create configuration diagrams using both mo
     - [![移動パターン１](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_05.png)](https://youtu.be/yYh6y8n4dNg?t=92)
 - [移動パターン２]
     - オブジェクト③がオブジェクト②の中にある場合に、オブジェクト②をマウスドラッグで移動してもオブジェクト③は移動しません。
-    - これは、オブジェクト①の`child-layers`にオブジェクト③の`child`要素の値`gr2`が設定ｓれていないためです。
+    - これは、オブジェクト①の`child-layers`にオブジェクト③の`child`要素の値`gr2`が設定されていないためです。
     - [![移動パターン２](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_06.png)](https://youtu.be/yYh6y8n4dNg?t=112)
 
 
 ## サンプルでオブジェクトの親子関係の活用例を紹介
 
 - サンプル`samples/05_AWS-VPC-Subnet-EC2サンプル.json`を使いオブジェクトの親子関係の活用例を紹介します。
-- xxxx
+- AWSの構成図を作図する場合の活用例を紹介します。
+- AWSはVPC,サブネットワーク,EC2と重ねることがあります。
+- GUI-DACなら
+    - [![オブジェクトの親子関係の活用例](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_04_01.png)](https://youtu.be/LSRW2hXTKcs)
 
 
 
