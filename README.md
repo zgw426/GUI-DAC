@@ -2,6 +2,8 @@
 A web application that allows you to create configuration diagrams using both mouse operations and code editing.
 # 構成図エディタ GUI-DAC (ジーユーアイ・ダック)
 
+<img src="./readme_parts/guidac_development.png" width="500">
+
 ## GUI-DACとは
 
 - マウスによる操作とコード編集の両方を使い構成図を作成できるWebアプリです。
