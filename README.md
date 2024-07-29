@@ -623,7 +623,10 @@ A web application that allows you to create configuration diagrams using both mo
     - オブジェクト①をマウスドラッグで移動してオブジェクト②に衝突させると押し出しが発生します。
     - これは、オブジェクト①とオブジェクト②のchild要素の値が同じ`gr3`のためです。
 
-[![押し出しパターン１](sample_object_03_00.png)](https://youtu.be/yYh6y8n4dNg?t=1)
+[![押し出しパターン１](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_01.png)](https://youtu.be/yYh6y8n4dNg?t=1)
+
+
+
 
 
 - [押し出しパターン２]
