@@ -200,7 +200,7 @@ A web application that allows you to create configuration diagrams using both mo
 #### オブジェクトのサンプルファイル
 
 - サンプルはこちらにあります。
-    - `samples/02_オブジェクトサンプル_rule2024-07-21.json`
+    - `samples/02_オブジェクトサンプル.json`
 
 
 
@@ -261,7 +261,7 @@ A web application that allows you to create configuration diagrams using both mo
 #### 接続線のサンプルファイル
 
 - サンプルはこちらにあります。
-    - `samples/03_接続線サンプル_rule2024-07-21.json`
+    - `samples/03_接続線サンプル.json`
 
 ### 複数オブジェクトの移動について
 
@@ -305,7 +305,7 @@ A web application that allows you to create configuration diagrams using both mo
 #### 押し出しのサンプルファイル
 
 - サンプルはこちらにあります。
-    - `samples/04_押し出し_移動サンプル_rule2024-07-21.json`
+    - `samples/04_押し出し_移動サンプル.json`
 
 
 -----------------------
@@ -317,10 +317,9 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## サンプルで【オブジェクト】を説明
 
-- サンプル`samples/02_オブジェクトサンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
+- サンプル`samples/02_オブジェクトサンプル.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
-
-<img src="./readme_parts/sample_object_01_01.png" width="300">
+- <img src="./readme_parts/sample_object_01_01.png" width="300">
 
 - 例（１）画像のみ(中央配置)
 
@@ -458,7 +457,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## サンプルで【接続線】を説明
 
-- サンプル`samples/03_接続線サンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
+- サンプル`samples/03_接続線サンプル.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
 
 <img src="./readme_parts/sample_object_02_01.png" width="300">
@@ -613,7 +612,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## サンプルで【押し出し】を説明
 
-- サンプル`samples/04_押し出し_移動サンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
+- サンプル`samples/04_押し出し_移動サンプル.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
 - <img src="./readme_parts/sample_object_03_00.png" width="300">
 
@@ -646,6 +645,13 @@ A web application that allows you to create configuration diagrams using both mo
     - オブジェクト③がオブジェクト②の中にある場合に、オブジェクト②をマウスドラッグで移動してもオブジェクト③は移動しません。
     - これは、オブジェクト①の`child-layers`にオブジェクト③の`child`要素の値`gr2`が設定ｓれていないためです。
     - [![移動パターン２](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_06.png)](https://youtu.be/yYh6y8n4dNg?t=112)
+
+
+
+## サンプルでオブジェクトの親子関係の活用例を紹介
+
+- サンプル`samples/05_AWS-VPC-Subnet-EC2サンプル.json`を使いオブジェクトの親子関係の活用例を紹介します。
+- 
 
 
 
