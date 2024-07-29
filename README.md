@@ -307,6 +307,89 @@ A web application that allows you to create configuration diagrams using both mo
 - サンプルはこちらにあります。
     - `samples/04_押し出し_移動サンプル.json`
 
+-----------------------
+
+
+## コードについて
+
+### コードの基本構成
+
+- 構成図の情報はJSONファイルで管理されています。
+- オブジェクトの情報は`objs`要素に記載されています。
+- 接続線の情報は`connects`要素に記載されています。
+- (`rule`要素は現在使用していません)
+
+```json
+{
+    "rule": "2024-03-31",
+    "objs": [
+        {オブジェクトＡ},
+        {オブジェクトＢ},
+        {オブジェクトＣ}
+    ],
+    "connects": [
+        {接続線１},
+        {接続線２},
+        {接続線３}
+    ]
+  }
+```
+
+### キャンバスのみ
+
+- キャンバスという特大のオブジェクトを配置することをオススメします。
+- 特大キャンバスを配置することにより、構成図全体を移動することができるためです。
+- キャンバスの`child-layers`要素には、全オブジェクトのグループ名(`group`)を記載してください。
+  - これにより、構成図全体の移動が可能になります。
+  - 存在しないグループ名を記載してもエラーは発生しません。
+  - そのため使うだろうグループ名を記載しておくこともできます。
+
+```json
+{
+    "rule": "2024-03-31",
+    "objs": [
+        {
+            "label": "CANVAS-9999999999",
+            "ns": "",
+            "x": -30070,
+            "y": -29980,
+            "w": 60000,
+            "h": 60000,
+            "color": "lightsteelblue",
+            "opacity": "1.0",
+            "group": "gr-Root",
+            "child-layers": [
+              "gr0",
+              "gr1",
+              "gr2",
+              "gr3",
+              "gr4"
+            ],
+            "child": [
+            ],
+            "line": "NONE",
+            "imgTL": "NONE",
+            "imgTR": "NONE",
+            "imgBL": "NONE",
+            "imgBR": "NONE",
+            "imgCE": "NONE",
+            "imgCL": "NONE",
+            "imgCR": "NONE",
+            "imgCT": "NONE",
+            "imgCB": "NONE",
+            "imgSize": 1,
+            "txtPosition": "txtTL"
+          }
+    ],
+    "connects": [
+
+    ]
+  }
+```
+
+
+
+
 
 -----------------------
 
