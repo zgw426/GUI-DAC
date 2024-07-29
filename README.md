@@ -625,23 +625,25 @@ A web application that allows you to create configuration diagrams using both mo
 - [押し出しパターン２]
     - オブジェクト①をマウスドラッグで移動してオブジェクト③に衝突させると押し出しが発生します。
     - これは、オブジェクト①の`child-layers`にオブジェクト③のグループ`gr2`を設定しているためです。
+    - [![押し出しパターン２](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_02.png)](https://youtu.be/yYh6y8n4dNg?t=24)
 - [押し出しパターン３]
     - オブジェクト③をマウスドラッグで移動してオブジェクト①に衝突させると押し出しが発生しません。
     - これは、オブジェクト③のchild-layersにオブジェクト①のグループ`gr2`が設定されていないためです。
+    - [![押し出しパターン３](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_03.png)](https://youtu.be/yYh6y8n4dNg?t=46)
 - [押し出しパターン４]
     - オブジェクト②をマウスドラッグで移動してオブジェクト③に衝突させると押し出しが発生しません。
     - これは、オブジェクト②のchild-layersにオブジェクト③のグループ`gr2`が設定されていないためです。
+    - [![押し出しパターン４](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_04.png)](https://youtu.be/yYh6y8n4dNg?t=76)
 - [移動パターン１]
     - オブジェクト③がオブジェクト①の中にある場合に、オブジェクト①をマウスドラッグで移動するとオブジェクト③も移動します。
     - これは以下2つの条件を満たしたことで、オブジェクト③がオブジェクト①の子要素と判定されたためです。
     - ・オブジェクト①の`child-layers`にオブジェクト③の`child`要素の値`gr2`があること
     - ・オブジェクト③がオブジェクト①の中にあること
+    - [![移動パターン１](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_05.png)](https://youtu.be/yYh6y8n4dNg?t=92)
 - [移動パターン２]
     - オブジェクト③がオブジェクト②の中にある場合に、オブジェクト②をマウスドラッグで移動してもオブジェクト③は移動しません。
     - これは、オブジェクト①の`child-layers`にオブジェクト③の`child`要素の値`gr2`が設定ｓれていないためです。
-
-
-
+    - [![移動パターン２](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_06.png)](https://youtu.be/yYh6y8n4dNg?t=112)
 
 
 
