@@ -614,7 +614,7 @@ A web application that allows you to create configuration diagrams using both mo
 - サンプル`samples/04_押し出し_移動サンプル_rule2024-07-21.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
 
-<img src="./readme_parts/sample_object_03_01.png" width="300">
+<img src="./readme_parts/sample_object_03_00.png" width="300">
 
 3つのオブジェクトには①,②,③と番号を割り振っています。ここではこれらオブジェクトのことをこの番号で区別します。
 このサンプルで、押し出しと移動について説明します。
@@ -622,6 +622,10 @@ A web application that allows you to create configuration diagrams using both mo
 - [押し出しパターン１]
     - オブジェクト①をマウスドラッグで移動してオブジェクト②に衝突させると押し出しが発生します。
     - これは、オブジェクト①とオブジェクト②のchild要素の値が同じ`gr3`のためです。
+
+[![押し出しパターン１](sample_object_03_00.png)](https://youtu.be/yYh6y8n4dNg?t=1)
+
+
 - [押し出しパターン２]
     - オブジェクト①をマウスドラッグで移動してオブジェクト③に衝突させると押し出しが発生します。
     - これは、オブジェクト①の`child-layers`にオブジェクト③のグループ`gr2`を設定しているためです。
