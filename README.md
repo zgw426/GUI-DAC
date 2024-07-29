@@ -394,7 +394,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 ### オブジェクトの描画順序について
 
-オブジェクトは
+オブジェクトはxxx
 
 
 
@@ -707,9 +707,8 @@ A web application that allows you to create configuration diagrams using both mo
 
 - サンプル`samples/05_AWS-VPC-Subnet-EC2サンプル.json`を使いオブジェクトの親子関係の活用例を紹介します。
 - AWSの構成図を作図する場合の活用例を紹介します。
-- AWSはVPC,サブネットワーク,EC2と重ねることがあります。
-- GUI-DACなら
+- AWSはVPC,サブネットワーク,EC2と重ねたオブジェクトをまとめて移動することができます。
+- また、VPCとVPCなど、重ねたくないオブジェクトを重ならないようにできます。
     - [![オブジェクトの親子関係の活用例](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_04_01.png)](https://youtu.be/LSRW2hXTKcs)
-
 
 
