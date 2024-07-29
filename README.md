@@ -352,11 +352,9 @@ A web application that allows you to create configuration diagrams using both mo
 ```
 
 - 例（３）画像を全てに配置
-
-<img src="./readme_parts/sample_object_01_03.png" width="300">
-
-オブジェクトに設定できる全てのポジションに画像を配置するとこのようになります。
-コードをみると imgXXの全てに画像ファイル(xxx.png)を指定していることが分かります。
+  - <img src="./readme_parts/sample_object_01_03.png" width="300">
+- オブジェクトに設定できる全てのポジションに画像を配置するとこのようになります。
+- コードをみると imgXXの全てに画像ファイル(xxx.png)を指定していることが分かります。
 
 ```json
     {
@@ -386,10 +384,8 @@ A web application that allows you to create configuration diagrams using both mo
 ```
 
 - 例（５）画像なし
-
-<img src="./readme_parts/sample_object_01_04.png" width="300">
-
-画像なしのオブジェクトを作成することもできます。
+  - <img src="./readme_parts/sample_object_01_04.png" width="300">
+- 画像なしのオブジェクトを作成することもできます。
 
 ```json
     {
@@ -419,11 +415,9 @@ A web application that allows you to create configuration diagrams using both mo
 ```
 
 - 例（６）画像のみ
-
-<img src="./readme_parts/sample_object_01_05.png" width="300">
-
-画像のみ（テキストなし）のオブジェクトを作成することもできます。
-`ns`要素に値を `""` とするとテキストなしになります。
+  - <img src="./readme_parts/sample_object_01_05.png" width="300">
+- 画像のみ（テキストなし）のオブジェクトを作成することもできます。
+- `ns`要素に値を `""` とするとテキストなしになります。
 
 ```json
     {
@@ -456,16 +450,10 @@ A web application that allows you to create configuration diagrams using both mo
 
 - サンプル`samples/03_接続線サンプル.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
-
-<img src="./readme_parts/sample_object_02_01.png" width="300">
-
-
-
+  - <img src="./readme_parts/sample_object_02_01.png" width="300">
 - 例（１）接続線（破線）
-
-<img src="./readme_parts/sample_object_02_02.png" width="300">
-
-2つのオブジェクトの接続線を引くことができます。
+  - <img src="./readme_parts/sample_object_02_02.png" width="300">
+- 2つのオブジェクトの接続線を引くことができます。
 
 ```json
     {
@@ -484,17 +472,11 @@ A web application that allows you to create configuration diagrams using both mo
     }
 ```
 
-以下のように、接続されたオブジェクトを移動すると接続線も移動します。
-
-<img src="./readme_parts/sample_object_02_03.png" width="300">
-
-
-
+- 以下のように、接続されたオブジェクトを移動すると接続線も移動します。
+  - <img src="./readme_parts/sample_object_02_03.png" width="300">
 - 例（３）３つの接続
-
-<img src="./readme_parts/sample_object_02_04.png" width="300">
-
-3つのオブジェクトを接続することもできます。`conns`要素にオブジェクトを設定すれば、いくつでも接続できます。
+  - <img src="./readme_parts/sample_object_02_04.png" width="300">
+- 3つのオブジェクトを接続することもできます。`conns`要素にオブジェクトを設定すれば、いくつでも接続できます。
 
 ```json
     {
@@ -515,11 +497,8 @@ A web application that allows you to create configuration diagrams using both mo
 ```
 
 - 例（４）接続線を分ける
-
-<img src="./readme_parts/sample_object_02_05.png" width="300">
-
-オブジェクトAとBの接続と、オブジェクトAとCの接続を分けたい場合は2つの接続線を作成します。
-
+  - <img src="./readme_parts/sample_object_02_05.png" width="300">
+- オブジェクトAとBの接続と、オブジェクトAとCの接続を分けたい場合は2つの接続線を作成します。
 
 ```json
     {
@@ -552,13 +531,10 @@ A web application that allows you to create configuration diagrams using both mo
     }
 ```
 
-
 - 例（５）接続線（重なり軽減）
-
-<img src="./readme_parts/sample_object_02_06.png" width="300">
-
-同じ経路を通る異なる接続線について、それら接続線の重なりを軽減します。
-これはそれぞれの接続線の `angle`要素の値を異なる値にしています。
+  - <img src="./readme_parts/sample_object_02_06.png" width="300">
+- 同じ経路を通る異なる接続線について、それら接続線の重なりを軽減します。
+- これはそれぞれの接続線の `angle`要素の値を異なる値にしています。
 
 ```json
     {
@@ -596,26 +572,18 @@ A web application that allows you to create configuration diagrams using both mo
 ```
 
 
-`angle`要素の値は、以下の図で示すところの角度であり、単位はラジアンです。
-
-<img src="./readme_parts/sample_object_02_08.png" width="300">
-
-
-例えば`angle`要素の値を同じ値 (`0`)にするとこのように接続線の重なる箇所が増えます。
-
-<img src="./readme_parts/sample_object_02_07.png" width="300">
-
-
+- `angle`要素の値は、以下の図で示すところの角度であり、単位はラジアンです。
+  - <img src="./readme_parts/sample_object_02_08.png" width="300">
+- 例えば`angle`要素の値を同じ値 (`0`)にするとこのように接続線の重なる箇所が増えます。
+  - <img src="./readme_parts/sample_object_02_07.png" width="300">
 
 ## サンプルで【押し出し】を説明
 
 - サンプル`samples/04_押し出し_移動サンプル.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
-- <img src="./readme_parts/sample_object_03_00.png" width="300">
-
-3つのオブジェクトには①,②,③と番号を割り振っています。ここではこれらオブジェクトのことをこの番号で区別します。
-このサンプルで、押し出しと移動について説明します。
-
+  - <img src="./readme_parts/sample_object_03_00.png" width="300">
+- 3つのオブジェクトには①,②,③と番号を割り振っています。ここではこれらオブジェクトのことをこの番号で区別します。
+- このサンプルで、押し出しと移動について説明します。
 - [押し出しパターン１]
     - オブジェクト①をマウスドラッグで移動してオブジェクト②に衝突させると押し出しが発生します。
     - これは、オブジェクト①とオブジェクト②のchild要素の値が同じ`gr3`のためです。
@@ -644,11 +612,10 @@ A web application that allows you to create configuration diagrams using both mo
     - [![移動パターン２](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_03_06.png)](https://youtu.be/yYh6y8n4dNg?t=112)
 
 
-
 ## サンプルでオブジェクトの親子関係の活用例を紹介
 
 - サンプル`samples/05_AWS-VPC-Subnet-EC2サンプル.json`を使いオブジェクトの親子関係の活用例を紹介します。
-- 
+- xxxx
 
 
 
