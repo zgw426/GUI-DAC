@@ -10,10 +10,10 @@
       "h": 60000,
       "color": "lightsteelblue",
       "opacity": "1.0",
-      "group": "gr-Root",
+      "group": "gr000",
       "child-layers": [
-        "gr2",
-        "gr3"
+        "gr103",
+        "gr104"
       ],
       "child": [],
       "line": "NONE",
@@ -38,9 +38,9 @@
       "h": 510,
       "color": "lightblue",
       "opacity": "1.0",
-      "group": "gr3",
+      "group": "gr104",
       "child-layers": [
-        "gr2"
+        "gr103"
       ],
       "child": [],
       "line": "black",
@@ -65,7 +65,7 @@
       "h": 510,
       "color": "lightblue",
       "opacity": "1.0",
-      "group": "gr3",
+      "group": "gr104",
       "child-layers": [],
       "child": [],
       "line": "black",
@@ -90,7 +90,7 @@
       "h": 300,
       "color": "green",
       "opacity": "1.0",
-      "group": "gr2",
+      "group": "gr103",
       "child": [],
       "child-layers": [],
       "line": "black",
