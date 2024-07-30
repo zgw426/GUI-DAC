@@ -126,12 +126,12 @@ A web application that allows you to create configuration diagrams using both mo
 |6|      "h": 1000,               |"h": {高さ}, |
 |7|      "color": "none",         |"color": "{色}",  |
 |8|      "opacity": "1.0",        |"opacity": "{透明度 0.6 なら60%}", |
-|9|      "group": "gr0"           |"group": "{グループ名}"|
+|9|      "group": "gr101"           |"group": "{グループ名}"|
 |10|      "child-layers": [        |"child-layers": [|
-|11|        "gr1",                 |        "{子要素になるグループ名}", |
-|12|        "gr1",                 |        "{子要素になるグループ名}", |
-|13|        "gr3",                 |        "{子要素になるグループ名}",|
-|14|        "gr4"                  |        "{子要素になるグループ名}" |
+|11|        "gr102",                 |        "{子要素になるグループ名}", |
+|12|        "gr103",                 |        "{子要素になるグループ名}", |
+|13|        "gr104",                 |        "{子要素になるグループ名}",|
+|14|        "gr105"                  |        "{子要素になるグループ名}" |
 |15|      ],                       |      ],|
 |16|      "child": [],             |      "child": ["{子要素になったグループ名：自動設定}"],|
 |17|      "line": "#000000",       |      "line": "{線の色。noneで線なし}",|
@@ -362,13 +362,13 @@ A web application that allows you to create configuration diagrams using both mo
             "h": 60000,
             "color": "lightsteelblue",
             "opacity": "1.0",
-            "group": "gr-Root",
+            "group": "gr000",
             "child-layers": [
-              "gr0",
-              "gr1",
-              "gr2",
-              "gr3",
-              "gr4"
+              "gr101",
+              "gr102",
+              "gr103",
+              "gr104",
+              "gr105"
             ],
             "child": [
             ],
@@ -427,7 +427,7 @@ A web application that allows you to create configuration diagrams using both mo
       "h": 40,
       "color": "none",
       "opacity": "1.0",
-      "group": "gr3",
+      "group": "gr104",
       "child": [],
       "line": "none",
       "imgTL": "NONE",
@@ -459,7 +459,7 @@ A web application that allows you to create configuration diagrams using both mo
       "h": 200,
       "color": "#899F9F",
       "opacity": "0.6",
-      "group": "gr3",
+      "group": "gr104",
       "child": [],
       "line": "none",
       "imgTL": "ec2.png",
@@ -490,7 +490,7 @@ A web application that allows you to create configuration diagrams using both mo
       "h": 140,
       "color": "yellow",
       "opacity": "1.0",
-      "group": "gr3",
+      "group": "gr104",
       "child": [],
       "line": "#000000",
       "imgTL": "NONE",
@@ -522,7 +522,7 @@ A web application that allows you to create configuration diagrams using both mo
       "h": 80,
       "color": "none",
       "opacity": "1.0",
-      "group": "gr3",
+      "group": "gr104",
       "child": [],
       "line": "none",
       "imgTL": "NONE",
