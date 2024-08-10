@@ -202,10 +202,11 @@ A web application that allows you to create configuration diagrams using both mo
     - ON or OFF を設定します。
     - 大きさ(w,h)の変更の可 or 不可 を設定します。
 - OriginalAiconSize1要素について
-    - キャンバスのみ設定する要素です
+    - キャンバスのみに設定する要素です
+    - キャンバス以外のオブジェクトにこの要素は設定しません
 - lineHightLight要素について
-    - キャンバスのみ設定する要素です
-
+    - キャンバスのみに設定する要素です
+    - キャンバス以外のオブジェクトにこの要素は設定しません
 
 
 #### オブジェクトの移動
@@ -259,13 +260,14 @@ A web application that allows you to create configuration diagrams using both mo
 |5|      "cirSize": 0.8,            |"cirSize": {円の大きさ},
 |6|      "angle": 0,                |"angle": {線},
 |7|      "lineGap": "2,2",          |"lineGap": "{破線の設定 実線の幅,空白の幅}",
-|8|      "cirStrokeWidth": 0.05,    |"cirStrokeWidth": 円の線幅,
-|9|      "conns": [                 |"conns": [
-|10|        "igw01",                 |"{label値}",
-|11|        "ALB01",                 |"{label値}",
-|12|        "EC201",                 |"{label値}",
-|13|        "RDS01"                  |"{label値}"
-|14|      ]                          |]
+|8|      "cirStrokeWidth": 0.05,    |"cirStrokeWidth": {円の線幅},
+|9|      "edgeEnd": "Triangle",   |"edgeEnd": {Triangle 矢印なし、NONE 矢印あり},
+|10|      "conns": [                 |"conns": [
+|11|        "igw01",                 |"{label値}",
+|12|        "ALB01",                 |"{label値}",
+|13|        "EC201",                 |"{label値}",
+|14|        "RDS01"                  |"{label値}"
+|15|      ]                          |]
 
 
 - id要素について
@@ -278,6 +280,10 @@ A web application that allows you to create configuration diagrams using both mo
     - 破線の設定をします。
     - 実線の幅,空白の幅 と数値を指定します。
     - 例：実線 3, 空白 4 の場合　`"3,4"`
+- edgeEnd要素について
+    - 接続線を矢印にするかどうかを設定します。
+    - `Triangle` 矢印あり
+    - `NONE` 矢印なし
 - conns
     - 接続するオブジェクトのlabel値を設定します。
     - オブジェクトは2つ以上設定する必要があります。
