@@ -798,10 +798,9 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## GUI-DACを使ってみる
 
-<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="QWXMxJy" data-pen-title="gui-dac-aws構成図-WebApp" data-user="sosi-now" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/sosi-now/pen/QWXMxJy">
+<iframe height="300" style="width: 100%;" scrolling="no" title="gui-dac-aws構成図-WebApp" src="https://codepen.io/sosi-now/embed/QWXMxJy?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/sosi-now/pen/QWXMxJy">
   gui-dac-aws構成図-WebApp</a> by suo (<a href="https://codepen.io/sosi-now">@sosi-now</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
