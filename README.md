@@ -136,7 +136,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 ||記載例|説明|
 |---|---|---|
-|1|      "label": "AWS01",        |      "label": "{1つの構成図の中で一意の文字列}", |
+|1|      "label": "AWS01",        |    "label": "{1つの構成図の中で一意の文字列}", |
 |2|      "ns": "0123456789",      |"ns": "{構成図に表示する文字列}", |
 |3|      "x": 500,                |"x": {X座標}, |
 |4|      "y": 170,                |"y": {Y座標}, |
@@ -144,31 +144,37 @@ A web application that allows you to create configuration diagrams using both mo
 |6|      "h": 1000,               |"h": {高さ}, |
 |7|      "color": "none",         |"color": "{色}",  |
 |8|      "opacity": "1.0",        |"opacity": "{透明度 0.6 なら60%}", |
-|9|      "group": "gr101"           |"group": "{グループ名}"|
+|9|      "group": "gr101"          |"group": "{グループ名}"|
 |10|      "child-layers": [        |"child-layers": [|
-|11|        "gr102",                 |        "{子要素になるグループ名}", |
-|12|        "gr103",                 |        "{子要素になるグループ名}", |
-|13|        "gr104",                 |        "{子要素になるグループ名}",|
-|14|        "gr105"                  |        "{子要素になるグループ名}" |
-|15|      ],                       |      ],|
-|16|      "child": [],             |      "child": ["{子要素になったグループ名：自動設定}"],|
-|17|      "line": "#000000",       |      "line": "{線の色。noneで線なし}",|
-|18|      "imgTL": "aws.png",      |      "imgTL": "{左上に配置する画像。NONEで指定なし}",|
-|19|      "imgTR": "NONE",         |      "imgTR": "{左上に配置する画像。NONEで指定なし}", |
-|20|      "imgBL": "NONE",         |      "imgBL": "{左上に配置する画像。NONEで指定なし}",|
-|21|      "imgBR": "NONE",         |      "imgBR": "{左上に配置する画像。NONEで指定なし}",|
-|22|      "imgCE": "NONE",         |      "imgCE": "{左上に配置する画像。NONEで指定なし}",|
-|23|      "imgCL": "NONE",         |      "imgCL": "{左上に配置する画像。NONEで指定なし}", |
-|24|      "imgCR": "NONE",         |      "imgCR": "{左上に配置する画像。NONEで指定なし}",|
-|25|      "imgCT": "NONE",         |      "imgCT": "{左上に配置する画像。NONEで指定なし}",|
-|26|      "imgCB": "NONE",         |      "imgCB": "{左上に配置する画像。NONEで指定なし}", |
-|27|      "imgSize": 2,            |      "imgSize": {配置する画像の倍率。2 なら2倍},|
-|28|      "txtPosition": "txtTL"   |      "txtPosition": "{文字列 ns の表示位置。txtTLは左上。txtCEは中央}"|
+|11|        "gr102",               |        "{子要素になるグループ名}", |
+|12|        "gr103",               |        "{子要素になるグループ名}", |
+|13|        "gr104",               |        "{子要素になるグループ名}",|
+|14|        "gr105"                |        "{子要素になるグループ名}" |
+|15|      ],                       |   ],|
+|16|      "child": [],             |  "child": ["{子要素になったグループ名：自動設定}"],|
+|17|      "line": "#000000",       |  "line": "{線の色。noneで線なし}",|
+|18|      "imgTL": "aws.png",      |  "imgTL": "{左上に配置する画像。NONEで指定なし}",|
+|19|      "imgTR": "NONE",         |  "imgTR": "{左上に配置する画像。NONEで指定なし}", |
+|20|      "imgBL": "NONE",         |  "imgBL": "{左上に配置する画像。NONEで指定なし}",|
+|21|      "imgBR": "NONE",         |  "imgBR": "{左上に配置する画像。NONEで指定なし}",|
+|22|      "imgCE": "NONE",         |  "imgCE": "{左上に配置する画像。NONEで指定なし}",|
+|23|      "imgCL": "NONE",         |  "imgCL": "{左上に配置する画像。NONEで指定なし}", |
+|24|      "imgCR": "NONE",         |  "imgCR": "{左上に配置する画像。NONEで指定なし}",|
+|25|      "imgCT": "NONE",         |  "imgCT": "{左上に配置する画像。NONEで指定なし}",|
+|26|      "imgCB": "NONE",         |  "imgCB": "{左上に配置する画像。NONEで指定なし}", |
+|27|      "imgSize": 2,            |  "imgSize": {配置する画像の倍率。2 なら2倍},|
+|28|      "txtPosition": "txtTL",  |  "txtPosition": "{文字列 ns の表示位置。txtTLは左上。txtCEは中央}"|
+|29|      "transFlg": "ON",  |  "transFlg": "{ON:大きさ(w,h)変更可、OFF:大きさ(w,h)変更不可}"|
+|30|      "OriginalAiconSize1": 10,|  "OriginalAiconSize1": "{imgTLなどで配置する画像の大きさ。単にピクセル}"|
+|31|      "lineHightLight": "OFF"  |  "lineHightLight": "{接続線のハイライト機能の ON ／ OFF}"|
+
 
 
 - label要素について
     - プログラムはこのlabel要素でオブジェクトを区別しています。
     - そのためlabel要素の値は1つの構成図の中で一意の文字列にしてください。
+    - キャンバスは、必ず`CANVAS`にします。
+    - キャンバスは、`gr000`とし、他オブジェクトは`gr001`,`gr100`,`gr101`など、昇順に並べた時に`gr000`より後になるよう値にする
 - group要素について
     - オブジェクトはグループ名によってグループ化されています。
     - 同じグループのオブジェクトは重なりません。
@@ -192,7 +198,13 @@ A web application that allows you to create configuration diagrams using both mo
     - imgTLのTLは、TopLeft=左上 です。
     - TopRight=右上、BottomLeft=左下、といった感じです。
     - CE はCenter=中央です。
-
+- transFlg要素について
+    - ON or OFF を設定します。
+    - 大きさ(w,h)の変更の可 or 不可 を設定します。
+- OriginalAiconSize1要素について
+    - キャンバスのみ設定する要素です
+- lineHightLight要素について
+    - キャンバスのみ設定する要素です
 
 
 
@@ -290,17 +302,17 @@ A web application that allows you to create configuration diagrams using both mo
 - マウス重ねた接続線とその円に対し、関連する接続線／円をハイライト表示します。
 - 関連するかの判定は、接続線のIDが関係します。
 - IDとして指定した文字列の`-`(ハイフン)より左側の文字列を関連すると判定します。
-- 例えば、3つの接続線のIDが`n001-1`,`n001-2`,`n002`だった場合、
-- `-`(ハイフン)より左側の文字列は、以下になる
+- 例えば、4つの接続線のIDが`n001-1`,`n001-2`,`n001-3-1`,`n002`だった場合、`-`(ハイフン)より左側の文字列は、以下になります。
 
 |接続線のID|`-`(ハイフン)より左側の文字列|
 |---|---|
 |n001-1|n001|
 |n001-2|n001|
+|n001-3-1|n001|
 |n002|n002|
 
-- `-`(ハイフン)より左側の文字列の文字列が`n001`の2つの接続線は関連ありとなります。
-- `-`(ハイフン)より左側の文字列の文字列が`n002`の接続線は他2つの接続線とは関連なしになります。
+- `-`(ハイフン)より左側の文字列の文字列が`n001`の3つの接続線は関連ありとなります。
+- `-`(ハイフン)より左側の文字列の文字列が`n002`の接続線は他3つの接続線とは関連なしになります。
 
 
 
@@ -392,21 +404,26 @@ A web application that allows you to create configuration diagrams using both mo
 ### キャンバスという特大オブジェクトについて
 
 - 特大のオブジェクトをキャンバスと呼称しています。
-- 最初に、このキャンバスを配置することをオススメします。
-  - キャンバスを配置することにより、構成図全体をマウスドラッグで移動できるためです。
+- 最初に、このキャンバスを**必ず**配置します。
 - キャンバスの`group`要素の値は一意にしてください。
   - `group`要素の値がキャンバスと同じオブジェクトは、キャンバスの外に押し出され、意図した場所に配置できないためです。
 - キャンバスの`child-layers`要素には、全オブジェクトのグループ名(`group`)を記載してください。
   - これにより、構成図全体の移動が可能になります。
   - 存在しないグループ名を記載してもエラーは発生しません。
   - そのため使うだろうグループ名を記載しておくこともできます。
+- キャンバスの決まり
+  - `label`要素の値は必ず`CANVAS`にする
+  - `group`要素の値は`gr000`とする(推奨)
+  - キャンバス以外のオブジェクトの`group`要素の値は昇順で並べるとキャンバスの値より後に並ぶようにする
+    - キャンバス以外のオブジェクトの`group`要素の値が`gr000`の場合、他オブジェクトの値は`gr001`,`gr002`,`gr100`などにする
 
-```json
+
+```json:キャンバスの設定例
 {
     "rule": "2024-03-31",
     "objs": [
         {
-            "label": "CANVAS-9999999999",
+            "label": "CANVAS",
             "ns": "",
             "x": -30070,
             "y": -29980,
@@ -435,7 +452,9 @@ A web application that allows you to create configuration diagrams using both mo
             "imgCT": "NONE",
             "imgCB": "NONE",
             "imgSize": 1,
-            "txtPosition": "txtTL"
+            "txtPosition": "txtTL",
+            "OriginalAiconSize1": 40,
+            "lineHightLight": "OFF"
           }
     ],
     "connects": [
@@ -447,7 +466,7 @@ A web application that allows you to create configuration diagrams using both mo
 ### オブジェクトと接続線の描画順序について
 
 - オブジェクトは`group`要素の値(文字列)の昇順で描画します。
-  - 2つのオブジェクトが`group`要素の値が一方が`gr1`で他方が`gr2`の場合、`gr1`のオブジェクトが先の描画されます。
+  - 2つのオブジェクトが`group`要素の値が一方が`gr101`で他方が`gr102`の場合、`gr101`のオブジェクトが先の描画されます。
 - 最初に描画したオブジェクトほど後ろに描画されます。
 - そのためより多くの子要素を持つオブジェクトほど最初に記載してください。
 - 接続線は、全てのオブジェクトを描画した後に描画します。
@@ -492,7 +511,8 @@ A web application that allows you to create configuration diagrams using both mo
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
-      "txtPosition": "txtCE"
+      "txtPosition": "txtCE",
+      "transFlg": "ON"
     }
 ```
 
@@ -524,7 +544,8 @@ A web application that allows you to create configuration diagrams using both mo
       "imgCT": "sBlue.png",
       "imgCB": "sGreen.png",
       "imgSize": 1,
-      "txtPosition": "txtTL"
+      "txtPosition": "txtTL",
+      "transFlg": "ON"
     }
 ```
 
@@ -555,7 +576,8 @@ A web application that allows you to create configuration diagrams using both mo
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 3,
-      "txtPosition": "txtTL"
+      "txtPosition": "txtTL",
+      "transFlg": "ON"
     }
 ```
 
@@ -587,7 +609,8 @@ A web application that allows you to create configuration diagrams using both mo
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 2,
-      "txtPosition": "txtCE"
+      "txtPosition": "txtCE",
+      "transFlg": "ON"
     }
 ```
 
@@ -610,6 +633,7 @@ A web application that allows you to create configuration diagrams using both mo
       "angle": 0,
       "lineGap": "3,3",
       "cirStrokeWidth": 0.05,
+      "edgeEnd": "NONE",
       "conns": [
         "vpeer-01-01",
         "vpeer-01-02"
@@ -633,6 +657,7 @@ A web application that allows you to create configuration diagrams using both mo
       "angle": 0,
       "lineGap": "3,0",
       "cirStrokeWidth": 0.2,
+      "edgeEnd": "NONE",
       "conns": [
         "vpeer-03-01",
         "vpeer-03-02",
@@ -655,6 +680,7 @@ A web application that allows you to create configuration diagrams using both mo
       "angle": 0,
       "lineGap": "3,0",
       "cirStrokeWidth": 0.2,
+      "edgeEnd": "NONE",
       "conns": [
         "vpeer-04-01",
         "vpeer-04-02"
@@ -669,6 +695,7 @@ A web application that allows you to create configuration diagrams using both mo
       "angle": 0,
       "lineGap": "3,2",
       "cirStrokeWidth": 0.1,
+      "edgeEnd": "NONE",
       "conns": [
         "vpeer-04-01",
         "vpeer-04-03"
@@ -691,6 +718,7 @@ A web application that allows you to create configuration diagrams using both mo
       "angle": 10,
       "lineGap": "3,0",
       "cirStrokeWidth": 0.1,
+      "edgeEnd": "NONE",
       "conns": [
         "ec2-05-01",
         "vpeer-05-01",
@@ -707,6 +735,7 @@ A web application that allows you to create configuration diagrams using both mo
       "angle": -10,
       "lineGap": "3,1",
       "cirStrokeWidth": 0.1,
+      "edgeEnd": "NONE",
       "conns": [
         "ec2-05-03",
         "vpeer-05-01",
@@ -766,9 +795,13 @@ A web application that allows you to create configuration diagrams using both mo
     - [![オブジェクトの親子関係の活用例](https://github.com/zgw426/GUI-DAC/blob/main/readme_parts/sample_object_04_01.png)](https://youtu.be/LSRW2hXTKcs)
 
 
-## サンプルでオブジェクトの描画順序を理解する
 
-- オブジェクトの描画順序は`group`要素の値で決まります。
-- xxxx
+## GUI-DACを使ってみる
 
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="QWXMxJy" data-pen-title="gui-dac-aws構成図-WebApp" data-user="sosi-now" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/sosi-now/pen/QWXMxJy">
+  gui-dac-aws構成図-WebApp</a> by suo (<a href="https://codepen.io/sosi-now">@sosi-now</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
