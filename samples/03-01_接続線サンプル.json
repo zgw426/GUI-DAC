@@ -2,7 +2,7 @@
   "rule": "2024-03-31",
   "objs": [
     {
-      "label": "CANVAS-9999999999",
+      "label": "CANVAS",
       "ns": "",
       "x": -30410,
       "y": -30030,
@@ -18,29 +18,7 @@
         "gr104",
         "gr105"
       ],
-      "child": [
-        "sample-01",
-        "sample-02",
-        "sample-03",
-        "vpeer-01-01",
-        "vpeer-01-02",
-        "vpeer-02-01",
-        "vpeer-02-02",
-        "vpeer-03-01",
-        "vpeer-03-02",
-        "vpeer-03-03",
-        "sample-04",
-        "vpeer-04-01",
-        "vpeer-04-02",
-        "vpeer-04-03",
-        "sample-05",
-        "ec2-05-01",
-        "vpeer-05-01",
-        "vpeer-05-02",
-        "ec2-05-02",
-        "ec2-05-03",
-        "ec2-05-04"
-      ],
+      "child": [],
       "line": "NONE",
       "imgTL": "NONE",
       "imgTR": "NONE",
@@ -52,7 +30,9 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
-      "txtPosition": "txtTL"
+      "txtPosition": "txtTL",
+      "OriginalAiconSize1": 40,
+      "lineHightLight": "OFF"
     },
     {
       "label": "sample-01",

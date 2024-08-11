@@ -1,38 +1,39 @@
 {
     "rule": "2024-03-31",
     "objs": [
-        {
-            "label": "CANVAS-9999999999",
-            "ns": "",
-            "x": -30070,
-            "y": -29980,
-            "w": 60000,
-            "h": 60000,
-            "color": "lightsteelblue",
-            "opacity": "1.0",
-            "group": "gr000",
-            "child-layers": [
-              "gr101",
-              "gr102",
-              "gr103",
-              "gr104",
-              "gr105"
-            ],
-            "child": [
-            ],
-            "line": "NONE",
-            "imgTL": "NONE",
-            "imgTR": "NONE",
-            "imgBL": "NONE",
-            "imgBR": "NONE",
-            "imgCE": "NONE",
-            "imgCL": "NONE",
-            "imgCR": "NONE",
-            "imgCT": "NONE",
-            "imgCB": "NONE",
-            "imgSize": 1,
-            "txtPosition": "txtTL"
-          }
+      {
+        "label": "CANVAS",
+        "ns": "",
+        "x": -30000,
+        "y": -30000,
+        "w": 60000,
+        "h": 60000,
+        "color": "none",
+        "opacity": "1.0",
+        "group": "gr-000",
+        "child-layers": [
+          "gr100",
+          "gr101",
+          "gr102",
+          "gr103",
+          "gr104"
+        ],
+        "child": [],
+        "line": "NONE",
+        "imgTL": "NONE",
+        "imgTR": "NONE",
+        "imgBL": "NONE",
+        "imgBR": "NONE",
+        "imgCE": "NONE",
+        "imgCL": "NONE",
+        "imgCR": "NONE",
+        "imgCT": "NONE",
+        "imgCB": "NONE",
+        "imgSize": 1,
+        "txtPosition": "txtTL",
+        "OriginalAiconSize1": 40,
+        "lineHightLight": "OFF"
+      }
     ],
     "connects": [
 

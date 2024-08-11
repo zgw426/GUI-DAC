@@ -2,7 +2,7 @@
   "rule": "2024-03-31",
   "objs": [
     {
-      "label": "CANVAS-9999999999",
+      "label": "CANVAS",
       "ns": "",
       "x": -28480,
       "y": -28590,
@@ -30,7 +30,9 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
-      "txtPosition": "txtTL"
+      "txtPosition": "txtTL",
+      "OriginalAiconSize1": 40,
+      "lineHightLight": "OFF"
     },
     {
       "label": "sample-01",

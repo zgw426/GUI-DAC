@@ -11,7 +11,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## GUI-DAC作成の動機
 
-- 構成図をコードで表現する技術Diagram as Code (DaC)とDaCツールに魅力を感じたのですが、好みのDaCツールが見つけられなかったので作ることにしました。
+- 構成図をコードで表現する技術Diagram as Code (DaC)とDaCツールに魅力を感じ、好みのDaCツールを作ることにしました。
 
 ## GUI-DACの特徴
 
@@ -27,17 +27,13 @@ A web application that allows you to create configuration diagrams using both mo
 - GUI-DACは、この領域がほぼ無限大です。
 - そのためキャンバスのサイズを気にせず構成図を作図できます。
 
-#### アカウント登録不要
-
-- GUI-DACはアカウント登録の機能がありません。
-
 #### 構成図をテキストデータで保存できる
 
 - GUI-DACで作成した構成図は、テキスト形式のデータとして保存できます。
 
 #### 配置を自由に決められる
 
-- GUI-DACは構成図ないの図の配置をユーザーが決めることができます。
+- GUI-DACは構成図内の図の配置をユーザーが決めることができます。
 - 構成図をコードで表現する技術をDiagram as Code (DaC)といい、ツールも多数存在します。
 - (勘違いかもしれませんが)それらDaCツールは配置編集についてユーザーの自由度が低いようです。
 - GUI-DACは配置情報(x,y座標)を実装したことで、ユーザーが自由に配置を決めることができます。
@@ -77,12 +73,14 @@ A web application that allows you to create configuration diagrams using both mo
 - ソースをダウンロードし、`gui-dac.html`をブラウザで開けば利用できます。
 
 
+## 動作環境
 
-- 動作確認した環境
-  - Windows11
-    - Chrome
-    - Brave
-    - Edge
+以下の環境で動作することを確認したことがあります。
+
+- Windows11
+  - Chrome
+  - Brave
+  - Edge
 
 
 
@@ -330,7 +328,6 @@ A web application that allows you to create configuration diagrams using both mo
 
 
 
-
 ----
 
 
@@ -421,7 +418,7 @@ A web application that allows you to create configuration diagrams using both mo
   - `label`要素の値は必ず`CANVAS`にする
   - `group`要素の値は`gr000`とする(推奨)
   - キャンバス以外のオブジェクトの`group`要素の値は昇順で並べるとキャンバスの値より後に並ぶようにする
-    - キャンバス以外のオブジェクトの`group`要素の値が`gr000`の場合、他オブジェクトの値は`gr001`,`gr002`,`gr100`などにする
+    - キャンバスオブジェクトの`group`要素の値が`gr000`の場合、他オブジェクトの値は`gr001`,`gr002`,`gr100`などにする
 
 
 ```json:キャンバスの設定例
