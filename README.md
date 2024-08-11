@@ -323,7 +323,7 @@ A web application that allows you to create configuration diagrams using both mo
 #### 接続線のサンプルファイル
 
 - サンプルはこちらにあります。
-    - `samples/03_接続線サンプル.json`
+    - `samples/03-01_接続線サンプル.json`
 
 
 
@@ -619,7 +619,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## サンプルで【接続線】を説明
 
-- サンプル`samples/03_接続線サンプル.json`を使いオブジェクトについて説明します。
+- サンプル`samples/03-01_接続線サンプル.json`を使いオブジェクトについて説明します。
 - このサンプルをGUI-DACで開くとこのような構成図が描画されます。
   - <img src="./readme_parts/sample_object_02_01.png" width="300">
 - 例（１）接続線（破線）
@@ -791,7 +791,7 @@ A web application that allows you to create configuration diagrams using both mo
 
 ## サンプルでオブジェクトの親子関係の活用例を紹介
 
-- サンプル`samples/05_AWS-VPC-Subnet-EC2サンプル.json`を使いオブジェクトの親子関係の活用例を紹介します。
+- サンプル`samples/AWS/04_AWS-VPC-Subnet-EC2サンプル.json`を使いオブジェクトの親子関係の活用例を紹介します。
 - AWSの構成図を作図する場合の活用例を紹介します。
 - AWSはVPC,サブネットワーク,EC2と重ねたオブジェクトをまとめて移動することができます。
 - また、VPCとVPCなど、重ねたくないオブジェクトを重ならないようにできます。
