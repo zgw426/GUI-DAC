@@ -70,7 +70,7 @@ A web application that allows you to create configuration diagrams using both mo
 ## セットアップ方法
 
 - GUI-DACはインストール不要です。
-- ソースをダウンロードし、`gui-dac.html`をブラウザで開けば利用できます。
+- ソースをダウンロードし、`./source/gui-dac.html`をブラウザで開けば利用できます。
 
 
 ## 動作環境
