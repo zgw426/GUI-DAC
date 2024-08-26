@@ -27,6 +27,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "ON",
       "txtPosition": "txtTL",
       "OriginalAiconSize1": 40,
       "lineHightLight": "OFF"
@@ -56,6 +57,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "ON",
       "txtPosition": "txtTL"
     },
     {
@@ -81,6 +83,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "ON",
       "txtPosition": "txtTL"
     },
     {
@@ -106,6 +109,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "ON",
       "txtPosition": "txtTL"
     }
   ],

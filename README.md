@@ -96,6 +96,10 @@ A web application that allows you to create configuration diagrams using both mo
 
 - 構成図の情報はJSON形式のテキストデータです。そのテキストデータの表示／非表示を切り替えるボタンです。
 - テキストデータを表示した状態では、マウスによる図の修正はできません。
+  - <img src="./readme_parts/show100.png" width="300">
+
+
+
 
 #### 反映ボタン
 

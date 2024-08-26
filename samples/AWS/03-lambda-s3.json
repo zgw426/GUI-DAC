@@ -94,6 +94,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 2,
+      "transFlg": "ON",
       "txtPosition": "txtTL"
     },
     {
@@ -118,6 +119,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "OFF",
       "txtPosition": "txtCE"
     },
     {
@@ -142,6 +144,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "OFF",
       "txtPosition": "txtCE"
     },
     {
@@ -166,6 +169,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "OFF",
       "txtPosition": "txtCE"
     },
     {
@@ -190,6 +194,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "OFF",
       "txtPosition": "txtCE"
     },
     {
@@ -214,6 +219,7 @@
       "imgCT": "NONE",
       "imgCB": "NONE",
       "imgSize": 1,
+      "transFlg": "OFF",
       "txtPosition": "txtCE"
     }
   ],
