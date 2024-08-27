@@ -167,9 +167,10 @@ A web application that allows you to create configuration diagrams using both mo
 |27|      "imgSize": 2,            |  "imgSize": {配置する画像の倍率。2 なら2倍},|
 |28|      "txtPosition": "txtTL",  |  "txtPosition": "{文字列 ns の表示位置。txtTLは左上。txtCEは中央}"|
 |29|      "transFlg": "ON",  |  "transFlg": "{ON:大きさ(w,h)変更可、OFF:大きさ(w,h)変更不可}"|
-|30|      "OriginalAiconSize1": 10,|  "OriginalAiconSize1": "{imgTLなどで配置する画像の大きさ。単にピクセル}"|
-|31|      "lineHightLight": "OFF"  |  "lineHightLight": "{接続線のハイライト機能の ON ／ OFF}"|
-
+|※30|      "OriginalAiconSize1": 10,|  "OriginalAiconSize1": "{imgTLなどで配置する画像の大きさ。単にピクセル}"|
+|※31|      "lineHightLight": "OFF",  |  "lineHightLight": "{接続線のハイライト機能の ON ／ OFF}"|
+|※32|      "FontHight": 20,  |  フォントサイズ|
+|※33|      "SPACEVAL": 10  |  グリッド移動の単位|
 
 
 - label要素について
@@ -206,9 +207,19 @@ A web application that allows you to create configuration diagrams using both mo
 - OriginalAiconSize1要素について
     - キャンバスのみに設定する要素です
     - キャンバス以外のオブジェクトにこの要素は設定しません
+    - デフォルトは`40`
 - lineHightLight要素について
     - キャンバスのみに設定する要素です
     - キャンバス以外のオブジェクトにこの要素は設定しません
+- FontHight要素について
+    - キャンバスのみに設定する要素です
+    - フォントサイズを指定します。
+    - デフォルトは`20`
+- SPACEVAL要素について
+    - キャンバスのみに設定する要素です
+    - グリッド移動の量を指定します。
+    - オブジェクトはグリッドにそって移動できます。
+    - デフォルトは`10`
 
 
 #### オブジェクトの移動

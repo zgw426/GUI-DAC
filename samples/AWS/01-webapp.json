@@ -32,7 +32,8 @@
       "imgSize": 1,
       "txtPosition": "txtTL",
       "OriginalAiconSize1": 40,
-      "lineHightLight": "OFF"
+      "lineHightLight": "OFF",
+      "FontHight": 20
     },
     {
       "label": "AWS01",

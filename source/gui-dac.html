@@ -162,7 +162,7 @@ let aiconPositions = ["imgTL","imgTR","imgBL","imgBR","imgCE","imgCL","imgCR","i
 let dacset = {
     "rule" : "2024-07-21",
     "objs" : [
-{label: "CANVAS","ns":"", "x": -30000, "y": -30000, "w":60000, "h":60000, color: "none", opacity: "1.0", group: "gr-Root", "child-layers":["gr0","gr1","gr2","gr3","gr4"], "child": [], line: "NONE", imgTL: "NONE", imgTR: "NONE", imgBL: "NONE", imgBR: "NONE", imgCE: "NONE","imgCL":"NONE","imgCR":"NONE","imgCT":"NONE","imgCB":"NONE","imgSize": 1.0, "txtPosition": "txtTL", "OriginalAiconSize1": 40, "lineHightLight": "OFF"},
+{label: "CANVAS","ns":"", "x": -30000, "y": -30000, "w":60000, "h":60000, color: "none", opacity: "1.0", group: "gr-Root", "child-layers":["gr0","gr1","gr2","gr3","gr4"], "child": [], line: "NONE", imgTL: "NONE", imgTR: "NONE", imgBL: "NONE", imgBR: "NONE", imgCE: "NONE","imgCL":"NONE","imgCR":"NONE","imgCT":"NONE","imgCB":"NONE","imgSize": 1.0, "txtPosition": "txtTL", "OriginalAiconSize1": 40, "lineHightLight": "OFF","FontHight": 20, "SPACEVAL": 10},
 
 {label: "AWS01","ns":"0123456789", "x": 20, "y": 20, "w":1240, "h":1000, color: "none", opacity: "1.0", group: "gr0", "child-layers":["gr1","gr2","gr3","gr4"], "child": [], line: "#000000", imgTL: "aws.png", imgTR: "NONE", imgBL: "NONE", imgBR: "NONE", imgCE: "NONE","imgCL":"NONE","imgCR":"NONE","imgCT":"NONE","imgCB":"NONE","imgSize": 1.0, "txtPosition": "txtTL", "transFlg": "ON"},
 
@@ -1402,18 +1402,15 @@ function setInit(){
     }
 
     scale = 1.0;
-
-    //OriginalAiconSize1 = 40;
-    OriginalAiconSize1 = dacset["objs"][0]["OriginalAiconSize1"];
+    OriginalAiconSize1 = dacset["objs"][0]["OriginalAiconSize1"] !== undefined ? dacset["objs"][0]["OriginalAiconSize1"] : 40;
     AiconSize1 = orgRound(OriginalAiconSize1, scale);
-    FontHight = OriginalFontHight * scale;
-    SPACEVAL = 10;
-    OriginalFontHight = 20;
+    FontHight = dacset["objs"][0]["FontHight"] !== undefined ? dacset["objs"][0]["FontHight"] : 20;
+    SPACEVAL = dacset["objs"][0]["SPACEVAL"] !== undefined ? dacset["objs"][0]["SPACEVAL"] : 10;
+    lineHightLight = dacset["objs"][0]["lineHightLight"] !== undefined ? dacset["objs"][0]["lineHightLight"] : "OFF";
+
     moveChildFlg = [];
     guiOperateFlg = true;  // GUI操作の有効(true)／無効(false)
     vGap = 10;
-
-    lineHightLight = dacset["objs"][0]["lineHightLight"];
 
     recordConsoleLog(recordConsoleLogFlg, "関数 setInit 終了");
 }
