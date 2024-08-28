@@ -1041,19 +1041,16 @@ document.onmouseup = function () {
 }
 
 
-document.onmousemove = onmousemovefnc;
-
-function onmousemovefnc(e){
-    //recordConsoleLog(recordConsoleLogFlg, "関数 onmousemovefnc 開始");
-
+function setGuiOperateFlg(){
+    // SVG描画領域にマウスがある場合はGUI操作を有効にする
     let divGuiNegative = ['menuArea', 'objectArea'];
     let divGuiActive = ['svgArea'];
+    let loGuiOperateFlg = false;
 
     divGuiActive.forEach(function(id) {
-        // SVG描画領域にマウスがある場合はGUI操作を有効にする
         let target = document.getElementById(id);
         if (target.contains(event.target)) {
-            guiOperateFlg = true;
+            loGuiOperateFlg = true;
         }
     });
 
@@ -1061,10 +1058,22 @@ function onmousemovefnc(e){
         // メニュー領域にマウスがある場合はGUI操作を無効にする
         let target = document.getElementById(id);
         if (target.contains(event.target)) {
-            guiOperateFlg = false;
+            loGuiOperateFlg = false;
         }
     });
 
+    return loGuiOperateFlg;
+}
+
+
+
+
+document.onmousemove = onmousemovefnc;
+
+function onmousemovefnc(e){
+    recordConsoleLog(recordConsoleLogFlg, "関数 onmousemovefnc 開始");
+
+    guiOperateFlg = setGuiOperateFlg();
     if(guiOperateFlg == false){
         // GUI操作が無効なら以降の処理をしない
         return;
@@ -1236,17 +1245,11 @@ function addObject(){
 }
 
 
-
-
-
-
-
-
-
 document.onmousedown = onmousedownfnc;
 
 function onmousedownfnc(e){
     recordConsoleLog(recordConsoleLogFlg, "関数 onmousedownfnc 開始");
+    guiOperateFlg = setGuiOperateFlg();
     if(guiOperateFlg == false){
         // GUI操作が無効なら以降の処理をしない
         // console.log("Processing cancelled.");
