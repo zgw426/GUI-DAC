@@ -120,7 +120,10 @@ main div.area03 {
     background-color: #D3D3D3;
 }
 
-
+textarea {
+  padding-left: 5px; /* 左側に余白を追加 */
+  box-sizing: border-box; /* パディングを含めたボックスサイズを設定 */
+}
 
 -->
 </style>
@@ -132,16 +135,19 @@ main div.area03 {
 <div class="menuArea" id="menuArea">
     <input class="styled" type="button" value="コード(Code)" onClick="changeMenuAreaSize('menuArea', 'CHANGE');" />
     <input type="file" id="file" accept="application/json">
+    <input class="styled" type="button" value="追加" onClick="addObject();" />
 
     <BR /><BR />
     <input class="styled" type="button" value="反映" onClick="loadDacsetFromArea();" />
     <BR />
     <textarea rows="60" cols="60" id="codeArea" style="font-size: 18px;"></textarea>
 
+
 </div>
 
 <div class="menuObjectArea" id="menuObjectArea">
-    <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea();" />
+    <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea('RENEW');" />
+    <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
     <BR />
     <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
 </div>
@@ -1131,18 +1137,19 @@ function onmousemovefnc(e){
 }
 
 
-
-
 function showInfoToObjectArea(){
     // objectArea に選択した図形の情報を表示
     const objarea = document.getElementById("objectArea");
     objset = objs[ drag.id ];
+    if (objset.child) {
+        // child配下をクリア
+        objset.child = [];
+    }
     objarea.value = JSON.stringify(objset, null, 2);  // textareaにコード(objset)を登録
-
 }
 
 
-function loadObjsetFromArea(){
+function loadObjsetFromArea(argFlg){
     // 反映：textarea(objectArea)からコードを読み取り、変数 dacset に格納する
     recordConsoleLog(recordConsoleLogFlg, "関数 loadDacsetFromArea 開始");
     try{
@@ -1150,25 +1157,83 @@ function loadObjsetFromArea(){
         const objtext = objarea.value;
         objset = JSON.parse(objtext);
 
-        // 対象のオブジェクトをtextarea(objectArea)の情報に上書きする
-        dacset.objs = dacset.objs.map(obj => 
-            obj.label === objset.label ? { ...obj, ...objset } : obj
-        );
+        if( argFlg == "RENEW"){
+            // 対象のオブジェクトをtextarea(objectArea)の情報に上書きする
+            dacset.objs = dacset.objs.map(obj => 
+                obj.label === objset.label ? { ...obj, ...objset } : obj
+            );
+        }else if ( argFlg == "DELETE"){
+            // 対象のオブジェクトをtextarea(objectArea)の情報に基づいて削除する
+            dacset.objs = dacset.objs.filter(obj => obj.label !== objset.label);
+        }
+
+
         // 再描画の処理
         objs = dacset["objs"]; // dacsetから図形描画の情報を格納
         objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
         connects = dacset["connects"]; // dacsetから接続線の情報を格納
         firstFlow();  // 構成図を再描画
     }catch (error){
-        alert("構成図のコードの読み込み時に問題が発生しました。\nJSONの形式が崩れている可能性が考えられます。");
+        alert("エラーが発生しました");
     }
     recordConsoleLog(recordConsoleLogFlg, "関数 loadDacsetFromArea 終了");
 }
 
 
 
+function generateRandomString(length) {
+    const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
+    }
+    return result;
+}
+
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
+function addObject(){
+    // 追加ボタン：オブジェクトを追加する
+    addLabel = generateRandomString(18);
+    addX = getRandomNumber(100, 200);
+    addY = getRandomNumber(100, 200);
+    addObj = {
+        "label": addLabel,
+        "ns": "AddedObject",
+        "x": addX,
+        "y": addY,
+        "w": 50,
+        "h": 50,
+        "color": "none",
+        "opacity": "1.0",
+        "group": "gr9999999",
+        "child-layers": [],
+        "child": [],
+        "line": "black",
+        "imgTL": "undefined.png",
+        "imgTR": "NONE",
+        "imgBL": "NONE",
+        "imgBR": "NONE",
+        "imgCE": "NONE",
+        "imgCL": "NONE",
+        "imgCR": "NONE",
+        "imgCT": "NONE",
+        "imgCB": "NONE",
+        "imgSize": 1,
+        "txtPosition": "txtTL",
+        "transFlg": "ON"
+    }
+
+    dacset.objs.push(addObj);
+    objs = dacset["objs"]; // dacsetから図形描画の情報を格納
+    objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
+    connects = dacset["connects"]; // dacsetから接続線の情報を格納
+    firstFlow();  // 構成図を再描画
+}
 
 
 
