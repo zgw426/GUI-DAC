@@ -38,6 +38,26 @@ body, html {
     padding-bottom: 10px; /* 下側のインデント */
 }
 
+
+.menuObjectArea {
+    width: 20%;
+    height: 50%;
+    background-color: rgba(128, 128, 128, 0.5);
+    position: absolute; /* Position the div within the SVG area */
+    top: 60px; /* Initial top position */
+    right: 10px; /* Initial left position */
+    cursor: grab; /* Show grab cursor for dragging */
+    overflow: hidden;
+    padding-left: 10px; /* 左側のインデント */
+    padding-right: 10px; /* 右側のインデント */
+    padding-top: 10px; /* 上側のインデント */
+    padding-bottom: 10px; /* 下側のインデント */
+}
+
+
+
+
+
 .menu01 {
     width: 99%;
     height: 300px;
@@ -119,6 +139,14 @@ main div.area03 {
     <textarea rows="60" cols="60" id="codeArea" style="font-size: 18px;"></textarea>
 
 </div>
+
+<div class="menuObjectArea" id="menuObjectArea">
+    <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea();" />
+    <BR />
+    <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
+</div>
+
+
 
 <svg id="svgArea"></svg>
 
@@ -754,7 +782,7 @@ function moveConnectToCoordinates(connectLineId, Ax,Ay,Bx,By) {
 
 // 矢印(三角形)を移動する
 function moveConnectEdge(edgeID,argSx,argSy,argEx,argEy) {
-    console.log("[moveConnectEdge] edgeID = " + edgeID);
+    //console.log("[moveConnectEdge] edgeID = " + edgeID);
     let arrowCoordinates = calculateArrowCoordinates(argSx,argSy,argEx,argEy);
     triA1x = arrowCoordinates[0]["x"];
     triA1y = arrowCoordinates[0]["y"];
@@ -1011,10 +1039,31 @@ document.onmousemove = onmousemovefnc;
 
 function onmousemovefnc(e){
     //recordConsoleLog(recordConsoleLogFlg, "関数 onmousemovefnc 開始");
+
+    let divGuiNegative = ['menuArea', 'objectArea'];
+    let divGuiActive = ['svgArea'];
+
+    divGuiActive.forEach(function(id) {
+        // SVG描画領域にマウスがある場合はGUI操作を有効にする
+        let target = document.getElementById(id);
+        if (target.contains(event.target)) {
+            guiOperateFlg = true;
+        }
+    });
+
+    divGuiNegative.forEach(function(id) {
+        // メニュー領域にマウスがある場合はGUI操作を無効にする
+        let target = document.getElementById(id);
+        if (target.contains(event.target)) {
+            guiOperateFlg = false;
+        }
+    });
+
     if(guiOperateFlg == false){
         // GUI操作が無効なら以降の処理をしない
         return;
     }
+
     if (drag.target != null) {
         dragAction(e); // 選択した図形の移動or変形と選択した図形の四隅に描画した円図形の移動
         setMoveChildFlg();  // moveChildFlg を 0 にリセットする
@@ -1083,6 +1132,52 @@ function onmousemovefnc(e){
 
 
 
+
+function showInfoToObjectArea(){
+    // objectArea に選択した図形の情報を表示
+    const objarea = document.getElementById("objectArea");
+    objset = objs[ drag.id ];
+    objarea.value = JSON.stringify(objset, null, 2);  // textareaにコード(objset)を登録
+
+}
+
+
+function loadObjsetFromArea(){
+    // 反映：textarea(objectArea)からコードを読み取り、変数 dacset に格納する
+    recordConsoleLog(recordConsoleLogFlg, "関数 loadDacsetFromArea 開始");
+    try{
+        const objarea = document.getElementById('objectArea');
+        const objtext = objarea.value;
+        objset = JSON.parse(objtext);
+
+        // 対象のオブジェクトをtextarea(objectArea)の情報に上書きする
+        dacset.objs = dacset.objs.map(obj => 
+            obj.label === objset.label ? { ...obj, ...objset } : obj
+        );
+        // 再描画の処理
+        objs = dacset["objs"]; // dacsetから図形描画の情報を格納
+        objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
+        connects = dacset["connects"]; // dacsetから接続線の情報を格納
+        firstFlow();  // 構成図を再描画
+    }catch (error){
+        alert("構成図のコードの読み込み時に問題が発生しました。\nJSONの形式が崩れている可能性が考えられます。");
+    }
+    recordConsoleLog(recordConsoleLogFlg, "関数 loadDacsetFromArea 終了");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.onmousedown = onmousedownfnc;
 
 function onmousedownfnc(e){
@@ -1122,6 +1217,9 @@ function onmousedownfnc(e){
 
                 // 変数 drag に選択した図形の情報を設定
                 setDragVal(Number(iId),e); // 変数 drag に対象図形の情報を格納
+
+                // objectArea に選択した図形の情報を表示
+                showInfoToObjectArea();
 
                 //-----------------------------------------------------//
                 if(drag.cTarget != true){
@@ -2009,8 +2107,9 @@ function changeMenuAreaSize(argArea, argFlg){
 
 
 
-// 反映：textareaからコードを読み取り、変数 dacset に格納する
+
 function loadDacsetFromArea(){
+    // 反映：textareaからコードを読み取り、変数 dacset に格納する
     recordConsoleLog(recordConsoleLogFlg, "関数 loadDacsetFromArea 開始");
     try{
         const codearea = document.getElementById('codeArea');
