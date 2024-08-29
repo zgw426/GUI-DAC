@@ -133,7 +133,12 @@ textarea {
 
 
 <div class="menuArea" id="menuArea">
+    <input class="styled" type="button" value="ファイルを出力" onClick="outputJsonFile();" />
+
+    <!--
     <input class="styled" type="button" value="コード(Code)" onClick="changeMenuAreaSize('menuArea', 'CHANGE');" />
+    -->
+
     <input type="file" id="file" accept="application/json">
     <input class="styled" type="button" value="追加" onClick="addObject();" />
 
@@ -181,7 +186,7 @@ let guiOperateFlg = true;  // GUI操作の有効(true)／無効(false)
 //const adjustmentY = 10;  // マウスポイント座標の位置補正(Y軸)
 
 let lineHightLight;  // 接続線のハイライト機能の有効(ON)／無効フラグ
-
+let outputJsonFileName;  // 構成図コードのファイル名
 
 dacsetRuleVersion = "2024-03-31";
 
@@ -196,7 +201,7 @@ let aiconPositions = ["imgTL","imgTR","imgBL","imgBR","imgCE","imgCL","imgCR","i
 let dacset = {
     "rule" : "2024-07-21",
     "objs" : [
-{label: "CANVAS","ns":"", "x": -30000, "y": -30000, "w":60000, "h":60000, color: "none", opacity: "1.0", group: "gr-Root", "child-layers":["gr0","gr1","gr2","gr3","gr4"], "child": [], line: "NONE", imgTL: "NONE", imgTR: "NONE", imgBL: "NONE", imgBR: "NONE", imgCE: "NONE","imgCL":"NONE","imgCR":"NONE","imgCT":"NONE","imgCB":"NONE","imgSize": 1.0, "txtPosition": "txtTL", "OriginalAiconSize1": 40, "lineHightLight": "OFF","FontHight": 20, "SPACEVAL": 10},
+{label: "CANVAS","ns":"", "x": -30000, "y": -30000, "w":60000, "h":60000, color: "none", opacity: "1.0", group: "gr-Root", "child-layers":["gr0","gr1","gr2","gr3","gr4"], "child": [], line: "NONE", imgTL: "NONE", imgTR: "NONE", imgBL: "NONE", imgBR: "NONE", imgCE: "NONE","imgCL":"NONE","imgCR":"NONE","imgCT":"NONE","imgCB":"NONE","imgSize": 1.0, "txtPosition": "txtTL", "OriginalAiconSize1": 40, "lineHightLight": "OFF","FontHight": 20, "SPACEVAL": 10, "outputJsonFileName": "gui-dac-sample.json"},
 
 {label: "AWS01","ns":"0123456789", "x": 20, "y": 20, "w":1240, "h":1000, color: "none", opacity: "1.0", group: "gr0", "child-layers":["gr1","gr2","gr3","gr4"], "child": [], line: "#000000", imgTL: "aws.png", imgTR: "NONE", imgBL: "NONE", imgBR: "NONE", imgCE: "NONE","imgCL":"NONE","imgCR":"NONE","imgCT":"NONE","imgCB":"NONE","imgSize": 1.0, "txtPosition": "txtTL", "transFlg": "ON"},
 
@@ -269,6 +274,8 @@ let dacset = {
 
 let objs = dacset["objs"]; // dacsetから図形描画の情報を格納
 let connects = dacset["connects"]; // dacsetから接続線の情報を格納
+let vGap = 10;
+let recordConsoleLogFlg = 0;  // recordConsoleLog関数で使うフラグ
 
 // マウスで選択した図形の情報
 let drag = {
@@ -298,10 +305,82 @@ let nDrag = {
     rangeX: null, rangeY: null
 }
 
+function initializeDragVariables(drag, nDrag) {
+    // マウスで選択した図形の情報
+    Object.assign(drag, {
+        action: null,
+        isMouseDown: false,
+        id: null,
+        target: null,
+        offsetx: 0,
+        offsety: 0,
+        w: null,
+        h: null,
+        cTarget: false,
+        cDifferencex: 0,
+        cDifferencey: 0,
+        group: null,
+        ctlId: null,
+        ctlTarget: null,
+        ctlElement: null,
+        ctlOffsetx: 0,
+        ctlOffsety: 0,
+        ctrId: null,
+        ctrTarget: null,
+        ctrElement: null,
+        ctrOffsetx: 0,
+        ctrOffsety: 0,
+        cblId: null,
+        cblTarget: null,
+        cblElement: null,
+        cblOffsetx: 0,
+        cblOffsety: 0,
+        cbrId: null,
+        cbrTarget: null,
+        cbrElement: null,
+        cbrOffsetx: 0,
+        cbrOffsety: 0,
+        rangeX: null,
+        rangeY: null
+    });
 
-let vGap = 10;
+    // マウスで選択した図形以外の情報を移動するときにここに情報を格納する
+    Object.assign(nDrag, {
+        action: null,
+        isMouseDown: false,
+        id: null,
+        target: null,
+        offsetx: 0,
+        offsety: 0,
+        cTarget: false,
+        cDifferencex: 0,
+        cDifferencey: 0,
+        group: null,
+        ctlId: null,
+        ctlTarget: null,
+        ctlElement: null,
+        ctlOffsetx: 0,
+        ctlOffsety: 0,
+        ctrId: null,
+        ctrTarget: null,
+        ctrElement: null,
+        ctrOffsetx: 0,
+        ctrOffsety: 0,
+        cblId: null,
+        cblTarget: null,
+        cblElement: null,
+        cblOffsetx: 0,
+        cblOffsety: 0,
+        cbrId: null,
+        cbrTarget: null,
+        cbrElement: null,
+        cbrOffsetx: 0,
+        cbrOffsety: 0,
+        rangeX: null,
+        rangeY: null
+    });
+}
 
-let recordConsoleLogFlg = 0;  // recordConsoleLog関数で使うフラグ
 
 function recordConsoleLog(argFlg, argString){
     if(argFlg == 1){
@@ -318,7 +397,7 @@ function calculateDistance(Ax, Ay, Bx, By) {
 
 
 // テキストを表示
-function addText(svgFld, x, y, txt, id) {
+function addText(svgFld, x, y, txt, id, argAnchor) {
     recordConsoleLog(recordConsoleLogFlg, "関数 addText 開始");
     this.text = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.text.setAttributeNS(null,"x", x);
@@ -327,7 +406,9 @@ function addText(svgFld, x, y, txt, id) {
     this.text.setAttributeNS(null,"id", id);  // テキスト要素にIDを付与
     text.setAttributeNS(null, "font-size", FontHight);  // フォントサイズを設定
 
-    text.setAttributeNS(null, "text-anchor", "start");  // 左揃えを設定
+    argAnchor
+    text.setAttributeNS(null, "text-anchor", argAnchor);  // 左揃えを設定
+    //text.setAttributeNS(null, "text-anchor", "start");  // 左揃えを設定
     //text.setAttributeNS(null, "text-anchor", "middle");  // 中央揃えを設定
     //text.setAttributeNS(null, "text-anchor", "end");  // 右揃えを設定
 
@@ -338,15 +419,18 @@ function addText(svgFld, x, y, txt, id) {
 // 対象図形の全テキストを移動
 function moveTextFlow(tgtId){
     recordConsoleLog(recordConsoleLogFlg, "関数 moveTextFlow 開始");
-    x = objs[tgtId]["x"];
-    y = objs[tgtId]["y"];
-    w = objs[tgtId]["w"];
-    h = objs[tgtId]["h"];
-    imgTL = objs[tgtId]["imgTL"];
-    imgSize = objs[tgtId]["imgSize"];
-    imgTL   = objs[tgtId]["imgTL"];
-    imgCE   = objs[tgtId]["imgCE"];
-    iTxtPosition   = objs[tgtId]["txtPosition"];
+    let x = objs[tgtId]["x"];
+    let y = objs[tgtId]["y"];
+    let w = objs[tgtId]["w"];
+    let h = objs[tgtId]["h"];
+    //let imgTL = objs[tgtId]["imgTL"];
+    let imgSize = objs[tgtId]["imgSize"];
+    let imgTL   = objs[tgtId]["imgTL"];
+    let imgCE   = objs[tgtId]["imgCE"];
+    let imgBL   = objs[tgtId]["imgBL"];
+    let imgBR   = objs[tgtId]["imgBR"];
+    let imgTR   = objs[tgtId]["imgTR"];
+    let iTxtPosition   = objs[tgtId]["txtPosition"];
 
     label = objs[tgtId]["label"];
 
@@ -369,13 +453,45 @@ function moveTextFlow(tgtId){
 
         case "txtCE":
             // テキストをCenterに配置
-            tlX = x+5;
+            tlX = x+5 + w*0.5;
             if(imgCE != "NONE"){
-                tlY = y+w*0.5+FontHight+AiconSize1*imgSize*0.5;
+                tlY = y+h*0.5+FontHight+AiconSize1*imgSize*0.5;
             }else{
-                tlX = y+FontHight;
+                tlY = y+h*0.5+FontHight;
             }
             break;
+
+        case "txtBL":
+            // テキストをBottomLeftに配置
+            if(imgBL != "NONE"){
+                tlX = x+AiconSize1*imgSize;
+            }else{
+                tlX = x+5;
+            }
+            tlY = y+h-5;
+            break;
+
+        case "txtBR":
+            // テキストをBottomLeftに配置
+            if(imgBR != "NONE"){
+                tlX = x+w-AiconSize1*imgSize-5;
+            }else{
+                tlX = x+w-5;
+            }
+            tlY = y+h-5;
+            break;
+
+        case "txtTR":
+            // テキストをBottomLeftに配置
+            if(imgTR != "NONE"){
+                tlX = x+w-AiconSize1*imgSize-5;
+            }else{
+                tlX = x+w-5;
+            }
+            tlY = y+FontHight;
+            break;
+
+            
     }
 
     let tlL = objs[tgtId]["label"];
@@ -997,15 +1113,6 @@ function svgTriangle(svgFld, x1, y1, x2, y2, x3, y3, colorFill, colorStroke, opa
         triangle.setAttribute("stroke-opacity", opacity3);
     }
 
-
-
-
-
-
-
-
-
-
     document.getElementById(svgFld).appendChild(triangle);
     recordConsoleLog(recordConsoleLogFlg, "関数 svgTriangle 終了");
     return triangle;
@@ -1027,7 +1134,6 @@ document.onmouseup = function () {
     recordConsoleLog(recordConsoleLogFlg, "関数 document.onmouseup 開始");
     if(guiOperateFlg == false){
         // GUI操作が無効なら以降の処理をしない
-        // console.log("Processing cancelled.");
         return;
     }
     drag.isMouseDown = false;
@@ -1037,6 +1143,7 @@ document.onmouseup = function () {
         objs[ drag.id ]["h"] = drag.target.height.baseVal.value;
     }
 	drag.target = null;
+    showInfoToObjectArea();  // objectArea に選択した図形の情報を表示
     recordConsoleLog(recordConsoleLogFlg, "関数 document.onmouseup 終了");
 }
 
@@ -1146,6 +1253,48 @@ function onmousemovefnc(e){
 }
 
 
+
+function outputJsonFile(){
+    // 構成図コードをファイル出力する
+    let nowDacset;
+    const tmpObjs = JSON.parse(JSON.stringify(objs)); // 深いコピーを作成
+    tmpObjs.forEach(loObj => {
+        // child配下の値をクリアする
+        if (Array.isArray(loObj.child)) {
+            loObj.child = [];
+        }
+    });
+    nowDacset = {
+        "rule" : dacsetRuleVersion,
+        "objs" : tmpObjs,
+        "connects" : connects
+    }
+
+    // 出力するテキスト内容
+    const text = JSON.stringify(nowDacset, null, 2);  // textareaにコード(dacset)を登録
+
+
+    // Blobオブジェクトを作成
+    const blob = new Blob([text], { type: 'text/plain' });
+
+    // ダウンロードリンクを作成
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = outputJsonFileName;
+
+    // リンクをクリックしてダウンロードを開始
+    link.click();
+
+    // メモリを解放
+    URL.revokeObjectURL(link.href);
+}
+
+
+
+
+
+
+
 function showInfoToObjectArea(){
     // objectArea に選択した図形の情報を表示
     const objarea = document.getElementById("objectArea");
@@ -1175,7 +1324,6 @@ function loadObjsetFromArea(argFlg){
             // 対象のオブジェクトをtextarea(objectArea)の情報に基づいて削除する
             dacset.objs = dacset.objs.filter(obj => obj.label !== objset.label);
         }
-
 
         // 再描画の処理
         objs = dacset["objs"]; // dacsetから図形描画の情報を格納
@@ -1252,7 +1400,6 @@ function onmousedownfnc(e){
     guiOperateFlg = setGuiOperateFlg();
     if(guiOperateFlg == false){
         // GUI操作が無効なら以降の処理をしない
-        // console.log("Processing cancelled.");
         return;
     }
     eX = e.pageX;
@@ -1286,13 +1433,9 @@ function onmousedownfnc(e){
                 // 変数 drag に選択した図形の情報を設定
                 setDragVal(Number(iId),e); // 変数 drag に対象図形の情報を格納
 
-                // objectArea に選択した図形の情報を表示
-                showInfoToObjectArea();
-
                 //-----------------------------------------------------//
                 if(drag.cTarget != true){
                     if(chIdFlg == 1){
-
                         drag.cTarget = true;
                         const dasharray = "1,3";  // 破線の設定
                         const cirStrokeWidth = 2.0
@@ -1508,17 +1651,16 @@ document.getElementById('file').addEventListener('change', function(event) {
 
 });
 
+const container = document.getElementById('menuObjectArea');
+const textarea = document.getElementById('objectArea');
 
+const resizeTextarea = () => {
+    textarea.style.width = `${container.clientWidth - 20}px`;
+    textarea.style.height = `${container.clientHeight - 50}px`;
+};
 
-
-
-
-
-
-
-
-
-
+window.addEventListener('resize', resizeTextarea);
+resizeTextarea(); // コード修正のテキスト欄のサイズ変更
 
 
 function firstFlow(){
@@ -1573,14 +1715,14 @@ function setInit(){
     FontHight = dacset["objs"][0]["FontHight"] !== undefined ? dacset["objs"][0]["FontHight"] : 20;
     SPACEVAL = dacset["objs"][0]["SPACEVAL"] !== undefined ? dacset["objs"][0]["SPACEVAL"] : 10;
     lineHightLight = dacset["objs"][0]["lineHightLight"] !== undefined ? dacset["objs"][0]["lineHightLight"] : "OFF";
-
+    outputJsonFileName = dacset["objs"][0]["outputJsonFileName"] !== undefined ? dacset["objs"][0]["outputJsonFileName"] : "gui-dac.json";
     moveChildFlg = [];
     guiOperateFlg = true;  // GUI操作の有効(true)／無効(false)
     vGap = 10;
 
+    initializeDragVariables(drag, nDrag);  // 既存の変数を初期化
     recordConsoleLog(recordConsoleLogFlg, "関数 setInit 終了");
 }
-
 
 
 // 倍率(sale)を元にサイズ/座標を更新する
@@ -1611,30 +1753,35 @@ function orgRound(argBase,argValue) {
 function addObjectFlow(){
     recordConsoleLog(recordConsoleLogFlg, "関数 addObjectFlow 開始");
     for (let i in objs) { // 四角形を描画
-        iId      = i;
-        iX       = objs[i]["x"];
-        iY       = objs[i]["y"];
-        iW       = objs[i]["w"];
-        iH       = objs[i]["h"];
-        iColor   = objs[i]["color"];
-        iOpacity = objs[i]["opacity"];
-		iLabel   = objs[i]["label"];
-        iNs      = objs[i]["ns"];  // 表示する文字(name-short)
-		iLine    = objs[i]["line"];
-        iImgSize = objs[i]["imgSize"];  // 画像のサイズ
-        iImgTL   = objs[i]["imgTL"];
-        iImgCE   = objs[i]["imgCE"];
-        iTxtPosition   = objs[i]["txtPosition"];
+        let iId      = i;
+        let iX       = objs[i]["x"];
+        let iY       = objs[i]["y"];
+        let iW       = objs[i]["w"];
+        let iH       = objs[i]["h"];
+        let iColor   = objs[i]["color"];
+        let iOpacity = objs[i]["opacity"];
+		let iLabel   = objs[i]["label"];
+        let iNs      = objs[i]["ns"];  // 表示する文字(name-short)
+		let iLine    = objs[i]["line"];
+        let iImgSize = objs[i]["imgSize"];  // 画像のサイズ
+        let iImgTL   = objs[i]["imgTL"];
+        let iImgCE   = objs[i]["imgCE"];
+        let imgBL    = objs[i]["imgBL"];
+        let imgBR    = objs[i]["imgBR"];
+        let imgTR    = objs[i]["imgTR"];
+        let iTxtPosition   = objs[i]["txtPosition"];
+        let iAnchor = "start";  // テキスト配置の設定
         svgRect(SvgArea,iX,iY,iW,iH,iColor,iOpacity,iId,iLine);
 
         moveChildFlg[iLabel] = 0;
         
         addAiconFlow(iId,iX,iY,iW,iH,iImgSize);
 
-        // テキストlabelを表示
+        // テキスト(ns要素)を表示
         switch(iTxtPosition){
             case "txtTL":
                 // テキストをTopLeftに配置
+                iAnchor = "start";
                 if(iImgTL != "NONE"){
                     txtX = iX+AiconSize1*iImgSize;
                 }else{
@@ -1645,18 +1792,54 @@ function addObjectFlow(){
 
             case "txtCE":
                 // テキストをCenterに配置
-                txtX = iX+5;
+                iAnchor = "middle";
+                txtX = iX+5 +iW*0.5;
                 if(iImgCE != "NONE"){
-                    //txtY = iY+FontHight+AiconSize1*iImgSize;
                     txtY = iY+iH*0.5+FontHight+AiconSize1*iImgSize*0.5;
                 }else{
-                    txtX = iY+iH*0.5+FontHight;
+                    txtY = iY+iH*0.5+FontHight;
                 }
                 break;
+
+            case "txtBL":
+                // テキストをBottomLeftに配置
+                iAnchor = "start";
+                if(imgBL != "NONE"){
+                    txtX = iX+AiconSize1*iImgSize;
+                }else{
+                    txtX = iX+5;
+                }
+                txtY = iY+iH-5;
+                break;
+
+            case "txtBR":
+                // テキストをBottomRightに配置
+                iAnchor = "end";
+                if(imgBR != "NONE"){
+                    txtX = iX+iW-AiconSize1*iImgSize-5;
+                }else{
+                    txtX = iX+iW-5;
+                }
+                txtY = iY+iH-5;
+                break;
+
+            case "txtTR":
+                // テキストをBottomRightに配置
+                iAnchor = "end";
+                if(imgTR != "NONE"){
+                    txtX = iX+iW-AiconSize1*iImgSize-5;
+                }else{
+                    txtX = iX+iW-5;
+                }
+                txtY = iY+FontHight;
+                break;
+
+
+
+
         }
 
-        addText(SvgArea, txtX, txtY, iNs, iId+"txtTL");
-        //addText(SvgArea, iX+AiconSize1, iY+FontHight, iNs, iId+"txtTL");
+        addText(SvgArea, txtX, txtY, iNs, iId+"txtTL", iAnchor);
     }
     recordConsoleLog(recordConsoleLogFlg, "関数 addObjectFlow 終了");
 }
