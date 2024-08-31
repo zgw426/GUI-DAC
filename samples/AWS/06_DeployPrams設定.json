@@ -1,0 +1,348 @@
+{
+  "rule": "2024-03-31",
+  "objs": [
+    {
+      "label": "CANVAS",
+      "ns": "",
+      "x": -30370,
+      "y": -30010,
+      "w": 60000,
+      "h": 60000,
+      "color": "lightblue",
+      "opacity": "1.0",
+      "group": "gr-Root",
+      "child-layers": [
+        "gr0",
+        "gr1",
+        "gr2",
+        "gr3",
+        "gr4"
+      ],
+      "child": [],
+      "line": "NONE",
+      "imgTL": "NONE",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "OriginalAiconSize1": 40,
+      "lineHightLight": "OFF",
+      "FontHight": 20,
+      "SPACEVAL": 10,
+      "outputJsonFileName": "gui-dac-params.json"
+    },
+    {
+      "label": "AWS01",
+      "ns": "0123456789",
+      "x": 360,
+      "y": 140,
+      "w": 820,
+      "h": 640,
+      "color": "white",
+      "opacity": "1.0",
+      "group": "gr0",
+      "child-layers": [
+        "gr1",
+        "gr2",
+        "gr3",
+        "gr4"
+      ],
+      "child": [],
+      "line": "#000000",
+      "imgTL": "aws.png",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "ON",
+      "deploy-params": {
+        "AWS-ID": "0123456789"
+      }
+    },
+    {
+      "label": "VPC01",
+      "ns": "abc-develop-vpc",
+      "x": 440,
+      "y": 220,
+      "w": 660,
+      "h": 510,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr1",
+      "child-layers": [
+        "gr2",
+        "gr3",
+        "gr4"
+      ],
+      "child": [],
+      "line": "#8C4FFF",
+      "imgTL": "vpc.png",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "ON",
+      "deploy-params": {
+        "tags": {
+          "Name": "abc-develop-vpc",
+          "Environment": "Develop"
+        },
+        "IPv4-CIDR": "10.0.0.0/16"
+      }
+    },
+    {
+      "label": "PubSub01",
+      "ns": "Public01",
+      "x": 470,
+      "y": 290,
+      "w": 170,
+      "h": 150,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr2",
+      "child-layers": [
+        "gr3"
+      ],
+      "child": [],
+      "line": "#7AA116",
+      "imgTL": "PublicSubnet.png",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "ON",
+      "deploy-params": {
+        "tags": {
+          "Name": "abc-develop-subnet-public1-ap-northeast-1a",
+          "Environment": "Develop"
+        },
+        "IPv4-CIDR": "10.0.0.0/20"
+      }
+    },
+    {
+      "label": "PubSub02",
+      "ns": "Public02",
+      "x": 470,
+      "y": 510,
+      "w": 170,
+      "h": 150,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr2",
+      "child-layers": [
+        "gr3"
+      ],
+      "child": [],
+      "line": "#7AA116",
+      "imgTL": "PublicSubnet.png",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "ON",
+      "deploy-params": {
+        "tags": {
+          "Name": "abc-develop-subnet-public2-ap-northeast-1c",
+          "Environment": "Develop"
+        },
+        "IPv4-CIDR": "10.0.16.0/20"
+      }
+    },
+    {
+      "label": "PriSub01",
+      "ns": "Private01",
+      "x": 670,
+      "y": 290,
+      "w": 170,
+      "h": 150,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr2",
+      "child-layers": [
+        "gr3"
+      ],
+      "child": [],
+      "line": "#00A4A6",
+      "imgTL": "PrivateSubnet.png",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "ON",
+      "deploy-params": {
+        "tags": {
+          "Name": "abc-develop-subnet-private1-ap-northeast-1a",
+          "Environment": "Develop"
+        },
+        "IPv4-CIDR": "10.0.128.0/20"
+      }
+    },
+    {
+      "label": "PriSub02",
+      "ns": "Private02",
+      "x": 670,
+      "y": 510,
+      "w": 170,
+      "h": 150,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr2",
+      "child-layers": [
+        "gr3"
+      ],
+      "child": [],
+      "line": "#00A4A6",
+      "imgTL": "PrivateSubnet.png",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "ON",
+      "deploy-params": {
+        "tags": {
+          "Name": "abc-develop-subnet-private2-ap-northeast-1c",
+          "Environment": "Develop"
+        },
+        "IPv4-CIDR": "10.0.144.0/20"
+      }
+    },
+    {
+      "label": "PriSub04",
+      "ns": "Private04",
+      "x": 870,
+      "y": 290,
+      "w": 170,
+      "h": 150,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr2",
+      "child-layers": [
+        "gr3"
+      ],
+      "child": [],
+      "line": "#00A4A6",
+      "imgTL": "PrivateSubnet.png",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "ON",
+      "deploy-params": {
+        "tags": {
+          "Name": "abc-develop-subnet-private3-ap-northeast-1a",
+          "Environment": "Develop"
+        },
+        "IPv4-CIDR": "10.0.160.0/20"
+      }
+    },
+    {
+      "label": "PriSub05",
+      "ns": "private05",
+      "x": 870,
+      "y": 510,
+      "w": 170,
+      "h": 150,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr2",
+      "child-layers": [
+        "gr3"
+      ],
+      "child": [],
+      "line": "#00A4A6",
+      "imgTL": "PrivateSubnet.png",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "NONE",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "ON",
+      "deploy-params": {
+        "tags": {
+          "Name": "abc-develop-subnet-private4-ap-northeast-1c",
+          "Environment": "Develop"
+        },
+        "IPv4-CIDR": "10.0.176.0/20"
+      }
+    },
+    {
+      "label": "igw01",
+      "ns": "",
+      "x": 420,
+      "y": 450,
+      "w": 50,
+      "h": 50,
+      "color": "none",
+      "opacity": "1.0",
+      "group": "gr3",
+      "child": [],
+      "line": "none",
+      "imgTL": "NONE",
+      "imgTR": "NONE",
+      "imgBL": "NONE",
+      "imgBR": "NONE",
+      "imgCE": "igw.png",
+      "imgCL": "NONE",
+      "imgCR": "NONE",
+      "imgCT": "NONE",
+      "imgCB": "NONE",
+      "imgSize": 1,
+      "txtPosition": "txtTL",
+      "transFlg": "OFF"
+    }
+  ],
+  "connects": []
+}

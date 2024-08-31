@@ -275,7 +275,8 @@ let dacset = {
 let objs = dacset["objs"]; // dacsetから図形描画の情報を格納
 let connects = dacset["connects"]; // dacsetから接続線の情報を格納
 let vGap = 10;
-let recordConsoleLogFlg = 0;  // recordConsoleLog関数で使うフラグ
+let recordConsoleLogFlg = 0;  // debug:recordConsoleLog関数で使うフラグ
+//recordConsoleLogFlg = 1;  // debug:recordConsoleLog関数で使うフラグ
 
 // マウスで選択した図形の情報
 let drag = {
@@ -1309,7 +1310,7 @@ function showInfoToObjectArea(){
 
 function loadObjsetFromArea(argFlg){
     // 反映：textarea(objectArea)からコードを読み取り、変数 dacset に格納する
-    recordConsoleLog(recordConsoleLogFlg, "関数 loadDacsetFromArea 開始");
+    recordConsoleLog(recordConsoleLogFlg, "関数 loadObjsetFromArea 開始");
     try{
         const objarea = document.getElementById('objectArea');
         const objtext = objarea.value;
@@ -1323,6 +1324,8 @@ function loadObjsetFromArea(argFlg){
         }else if ( argFlg == "DELETE"){
             // 対象のオブジェクトをtextarea(objectArea)の情報に基づいて削除する
             dacset.objs = dacset.objs.filter(obj => obj.label !== objset.label);
+            // 対象オブジェクトを含む接続線からも削除する
+            deleteObjectFromConnect(objset.label);
         }
 
         // 再描画の処理
@@ -1331,10 +1334,40 @@ function loadObjsetFromArea(argFlg){
         connects = dacset["connects"]; // dacsetから接続線の情報を格納
         firstFlow();  // 構成図を再描画
     }catch (error){
-        alert("エラーが発生しました");
+        alert("エラーが発生しました 関数：loadObjsetFromArea");
     }
-    recordConsoleLog(recordConsoleLogFlg, "関数 loadDacsetFromArea 終了");
+    recordConsoleLog(recordConsoleLogFlg, "関数 loadObjsetFromArea 終了");
 }
+
+
+function deleteObjectFromConnect(argLabel){
+    recordConsoleLog(recordConsoleLogFlg, "関数 deleteObjectFromConnect 開始");
+    delConnects = [];
+    for (let i in connects) {
+        //console.log(connects[i]["conns"]);
+        if (connects[i]["conns"].includes(argLabel)) {
+            //console.log(`${argLabel} ${connects[i]["conns"].length}`);
+            if(connects[i]["conns"].length > 2){
+                // 接続線から対象オブジェクトを削除する
+                connects[i]["conns"] = connects[i]["conns"].filter(item => item !== argLabel);
+            }else{
+                // 接続線そのものを削除するラベルを格納する
+                delConnects.push(connects[i]["id"]);
+            }
+        }
+    }
+    for( let i in delConnects){
+        // 接続線を削除する
+        dacset["connects"] = dacset["connects"].filter(item => item.id !== delConnects[i]);
+    }
+    recordConsoleLog(recordConsoleLogFlg, "関数 deleteObjectFromConnect 終了");
+}
+
+
+
+
+
+
 
 
 
@@ -1703,11 +1736,14 @@ function clearArray(array) {
 
 function setInit(){
     recordConsoleLog(recordConsoleLogFlg, "関数 setInit 開始");
+    /*
     const svgElement = document.getElementById('svgArea');
     // 子要素をすべて削除
     while (svgElement.firstChild) {
         svgElement.removeChild(svgElement.firstChild);
     }
+    */
+    clearShapes();  // SVGキャンパスをクリア
 
     scale = 1.0;
     OriginalAiconSize1 = dacset["objs"][0]["OriginalAiconSize1"] !== undefined ? dacset["objs"][0]["OriginalAiconSize1"] : 40;
@@ -2393,6 +2429,7 @@ function loadDacsetFromArea(){
 
 
 // SVGキャンパスを一度クリアして、倍率を変えて再描画する
+/*
 function changeDivParam(argRatio){
     recordConsoleLog(recordConsoleLogFlg, "関数 changeDivParam 開始");
     scale = argRatio;  // 倍率を設定
@@ -2427,7 +2464,7 @@ function changeDivParam(argRatio){
     addConnectFlow();  // SVGキャンパスに接続線を描画
     recordConsoleLog(recordConsoleLogFlg, "関数 changeDivParam 終了");
 }
-
+*/
 
 // SVGキャンパスをクリアする
 function clearShapes() {
