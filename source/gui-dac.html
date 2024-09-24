@@ -41,17 +41,18 @@ body, html {
 
 .menuObjectArea {
     width: 20%;
-    height: 50%;
+    height: 100%;
     background-color: rgba(128, 128, 128, 0.5);
     position: absolute; /* Position the div within the SVG area */
-    top: 60px; /* Initial top position */
-    right: 10px; /* Initial left position */
+    top: 0px; /* Initial top position */
+    right: 0px; /* Initial left position */
     cursor: grab; /* Show grab cursor for dragging */
     overflow: hidden;
     padding-left: 10px; /* 左側のインデント */
     padding-right: 10px; /* 右側のインデント */
     padding-top: 10px; /* 上側のインデント */
     padding-bottom: 10px; /* 下側のインデント */
+    text-align: right; /* 右揃え */
 }
 
 
@@ -125,37 +126,170 @@ textarea {
   box-sizing: border-box; /* パディングを含めたボックスサイズを設定 */
 }
 
+
+
+.container {
+    display: flex;
+    align-items: flex-start; /* 高さを揃えたい場合に使用 */
+}
+
+#infoArea {
+    width: 49%;
+    height: 100px;
+    background-color: lightgray;
+    padding: 2%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    text-align: left;
+}
+
+#objectArea {
+    width: 49%;
+    height: 10%;
+}
+
+
+
+
+
 -->
 </style>
 
 </head>
 <body>
 
-
+<!--
 <div class="menuArea" id="menuArea">
     <input class="styled" type="button" value="ファイルを出力" onClick="outputJsonFile();" />
-
-    <!--
-    <input class="styled" type="button" value="コード(Code)" onClick="changeMenuAreaSize('menuArea', 'CHANGE');" />
-    -->
-
     <input type="file" id="file" accept="application/json">
-    <input class="styled" type="button" value="追加" onClick="addObject();" />
-
-    <BR /><BR />
-    <input class="styled" type="button" value="反映" onClick="loadDacsetFromArea();" />
-    <BR />
-    <textarea rows="60" cols="60" id="codeArea" style="font-size: 18px;"></textarea>
-
+    <input class="styled" type="button" value="オブジェクト追加" onClick="addObject();" />
 
 </div>
+-->
 
+<!--
 <div class="menuObjectArea" id="menuObjectArea">
+    <input class="styled" type="button" value="窓サイズ" onClick="changeDivAreaSize('menuObjectArea', 'CHANGE');" />
+    <input type="file" id="file" accept="application/json">
+    <input class="styled" type="button" value="ファイルを出力" onClick="addObject();" />
+    <select name="editMode" onClick="renewObjectMode()">
+        <option value="objectEditMode">オブジェクト編集モード</option>
+        <option value="connectEditMode">接続線の編集モード</option>
+    </select>
     <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea('RENEW');" />
-    <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
+    <BR />
+    <div id="menuOptionArea"></div>
     <BR />
     <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
+    <BR />
+    <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
 </div>
+-->
+
+<!--
+<div class="menuObjectArea" id="menuObjectArea">
+
+<table border="1" cellspacing="0" cellpadding="5" width="100%">
+
+<tr>
+    <td colspan="2">
+        <input class="styled" type="button" value="窓サイズ" onClick="changeDivAreaSize('menuObjectArea', 'CHANGE');" />
+        <input type="file" id="file" accept="application/json">
+        <input class="styled" type="button" value="ファイルを出力" onClick="addObject();" />
+    </td>
+    <td></td>
+</tr>
+
+
+<tr>
+    <td>
+        <select name="editMode" onClick="renewObjectMode()">
+            <option value="objectEditMode">オブジェクト編集モード</option>
+            <option value="connectEditMode">接続線の編集モード</option>
+        </select>
+    </td>
+    <td>
+        <select name="editMode" onClick="renewObjectMode()">
+            <option value="objectEditMode">Aオブジェクト編集モード</option>
+            <option value="connectEditMode">A接続線の編集モード</option>
+        </select>
+    </td>
+
+</tr>
+
+<tr>
+    <td>
+        <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea('RENEW');" />
+    </td>
+    <td>
+        <div id="menuOptionArea"></div>
+    </td>
+</tr>
+
+<tr>
+    <td style="text-align: left; vertical-align: top;">
+        <div id="infoArea">ddddd--dd</div>
+    </td>
+    <td>
+        <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
+    </td>
+</tr>
+
+<tr>
+    <td></td>
+    <td>
+        <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
+    </td>
+</tr>
+
+</table>
+
+
+</div>
+-->
+
+
+
+<!-- -->
+<div class="menuObjectArea" id="menuObjectArea">
+    <input class="styled" type="button" value="窓サイズ" onClick="changeDivAreaSize('menuObjectArea', 'CHANGE');" />
+    <input type="file" id="file" accept="application/json">
+    <input class="styled" type="button" value="ファイルを出力" onClick="addObject();" />
+
+    <select name="infoMode" onClick="renewInfoMode()">
+        <option value="objectInfoMode">オブジェクト一覧</option>
+        <option value="aiconInfoMode">アイコン一覧</option>
+    </select>
+
+    <select name="editMode" onClick="renewObjectMode()">
+        <option value="objectEditMode">オブジェクト編集モード</option>
+        <option value="connectEditMode">接続線の編集モード</option>
+    </select>
+
+
+
+    <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea('RENEW');" />
+    <BR />
+    <div id="menuOptionArea"></div>
+    <BR />
+
+    <div class="container">
+        <div id="infoArea">オブジェクト一覧をリスト表示するところ</div>
+        <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
+    </div>
+
+    <BR />
+    <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
+</div>
+<!-- -->
+
+
+
+
+
+
+
+
 
 
 
@@ -187,6 +321,11 @@ let guiOperateFlg = true;  // GUI操作の有効(true)／無効(false)
 
 let lineHightLight;  // 接続線のハイライト機能の有効(ON)／無効フラグ
 let outputJsonFileName;  // 構成図コードのファイル名
+
+let selectedMode = 'objectEditMode';  // テキストエリアの編集モード
+let infoMode = 'objectInfoMode';  // infoエリアのモード [objectInfoMode|aiconInfoMode]
+
+
 
 dacsetRuleVersion = "2024-03-31";
 
@@ -245,26 +384,32 @@ let dacset = {
     ],
     "connects" : [
         {
+            "serial-id": "Y1Ew4T2Gal",
             "id":"n001-1", "color":"red","opa":1.0,"aline":3,"cirSize":0.8,"angle":0,"lineGap":"2,0","cirStrokeWidth":0.1,"edgeEnd": "Triangle",
             "conns": [ "igw01","ALB01","EC201","RDS01" ]
         },
         {
+            "serial-id": "WMFmPat6vr",
             "id":"n001-2", "color":"red","opa":1.0,"aline":3,"cirSize":0.8,"angle":0,"lineGap":"2,0","cirStrokeWidth":0.1,"edgeEnd": "Triangle",
             "conns": [ "ALB01","EC202","RDS01" ]
         },
         {
+            "serial-id": "T2Ofr2ypcI",
             "id":"n003", "color":"#000000","opa":0.8,"aline":4,"cirSize":0.6,"angle":0,"lineGap":"1,0","cirStrokeWidth":0.05,"edgeEnd": "NONE",
             "conns": [ "RDS01","RDS02" ]
         },
         {
+            "serial-id": "wIPAnDak5V",
             "id":"n004", "color":"#343456","opa":0.8,"aline":10,"cirSize":0.6,"angle":0,"lineGap":"1,0","cirStrokeWidth":0.2,"edgeEnd": "NONE",
             "conns": [ "vpeer01","vpeer02" ]
         },
         {
+            "serial-id": "4PIUPViues",
             "id":"n005", "color":"#343456","opa":0.8,"aline":10,"cirSize":0.6,"angle":0,"lineGap":"1,0","cirStrokeWidth":0.2,"edgeEnd": "NONE",
             "conns": [ "vpeer03","vpeer04" ]
         },
         {
+            "serial-id": "2Ls5tsVGt4",
             "id":"n006", "color":"#a489F0","opa":1.0,"aline":4,"cirSize":0.8,"angle":0,"lineGap":"3,0","cirStrokeWidth":0.1,"edgeEnd": "Triangle",
             "conns": [ "EC203","vpeer03","vpeer04","VPC03EC201" ]
         }
@@ -395,6 +540,41 @@ function calculateDistance(Ax, Ay, Bx, By) {
     const distance = Math.sqrt((Bx - Ax) ** 2 + (By - Ay) ** 2);
     return distance;
 }
+
+
+
+function renewObjectMode(){
+    let optionStr = "";
+    // テキストエリアの編集モードの変数を更新する
+    selectedMode = document.querySelector('select[name="editMode"]').value;
+
+    const objarea = document.getElementById("objectArea");
+    objarea.value = "";  // クリア
+
+    let valArg = "";
+    let valMenu = "";
+    if(selectedMode=="connectEditMode"){
+        valMenu = "新規-接続線";
+        valArg = "CONNECT";
+    }else{
+        valMenu = "新規-オブジェクト";
+        valArg = "OBJECT";
+    }
+    optionStr = "<input class='styled' type='button' value=\"" + valMenu + "\" onClick='addNewThing(\"" + valArg + "\");' />";
+    document.getElementById("menuOptionArea").innerHTML = optionStr;
+}
+
+
+
+function renewInfoMode(){
+    infoMode = document.querySelector('select[name="editMode"]').value;
+    // [objectInfoMode|aiconInfoMode]
+    //console.log(infoMode);
+}
+
+
+
+
 
 
 // テキストを表示
@@ -1145,13 +1325,16 @@ document.onmouseup = function () {
     }
 	drag.target = null;
     showInfoToObjectArea();  // objectArea に選択した図形の情報を表示
+    setInfoArea();  // オブジェクト一覧表示
     recordConsoleLog(recordConsoleLogFlg, "関数 document.onmouseup 終了");
 }
 
 
 function setGuiOperateFlg(){
     // SVG描画領域にマウスがある場合はGUI操作を有効にする
-    let divGuiNegative = ['menuArea', 'objectArea'];
+    //let divGuiNegative = ['menuArea', 'objectArea'];
+    let divGuiNegative = ['objectArea'];
+
     let divGuiActive = ['svgArea'];
     let loGuiOperateFlg = false;
 
@@ -1298,14 +1481,49 @@ function outputJsonFile(){
 
 function showInfoToObjectArea(){
     // objectArea に選択した図形の情報を表示
-    const objarea = document.getElementById("objectArea");
-    objset = objs[ drag.id ];
-    if (objset.child) {
-        // child配下をクリア
-        objset.child = [];
+    recordConsoleLog(recordConsoleLogFlg, "関数 showInfoToObjectArea 開始");
+    try{
+        const objarea = document.getElementById("objectArea");
+        objarea.value = "";  // クリア
+
+        if(selectedMode == "objectEditMode")
+        {
+            // オブジェクト編集モード場合
+            objset = objs[ drag.id ];
+            if (objset.child) {
+                // child配下をクリア
+                objset.child = [];
+            }
+            objarea.value = JSON.stringify(objset, null, 2);  // textareaにコード(objset)を登録
+        }else{
+            let showCon = []; // showConは配列として初期化
+            for (let i in connects) {
+                const connectsStr = connects[i]["conns"];
+                const connectId = connects[i]["id"];
+                const connectCirSize= connects[i]["cirSize"] * AiconSize1;
+                const connectAngle = connects[i]["angle"];
+                const connectEdgeEnd = connects[i]["edgeEnd"];
+
+                if (connectsStr.includes(objs[ drag.id ]["label"])) {
+                    // ヒットした内容をJSON形式でshowConに登録
+                    showCon.push(connects[i]);
+                }
+            }
+            objarea.value = JSON.stringify(showCon, null, 2);
+        }
+    }catch (error){
+        alert("構成図のコードの読み込み時に問題が発生しました。\nJSONの形式が崩れている可能性が考えられます。");
     }
-    objarea.value = JSON.stringify(objset, null, 2);  // textareaにコード(objset)を登録
+    recordConsoleLog(recordConsoleLogFlg, "関数 showInfoToObjectArea 終了");
 }
+
+
+
+
+
+
+
+
 
 
 function loadObjsetFromArea(argFlg){
@@ -1314,27 +1532,59 @@ function loadObjsetFromArea(argFlg){
     try{
         const objarea = document.getElementById('objectArea');
         const objtext = objarea.value;
-        objset = JSON.parse(objtext);
 
-        if( argFlg == "RENEW"){
-            // 対象のオブジェクトをtextarea(objectArea)の情報に上書きする
-            dacset.objs = dacset.objs.map(obj => 
-                obj.label === objset.label ? { ...obj, ...objset } : obj
-            );
-        }else if ( argFlg == "DELETE"){
-            // 対象のオブジェクトをtextarea(objectArea)の情報に基づいて削除する
-            dacset.objs = dacset.objs.filter(obj => obj.label !== objset.label);
-            // 対象オブジェクトを含む接続線からも削除する
-            deleteObjectFromConnect(objset.label);
+        if(selectedMode == "objectEditMode")
+        {
+            // オブジェクト編集モード
+            objset = JSON.parse(objtext);  // テキストエリアの値を変数に格納
+            if( argFlg == "RENEW"){
+                // 対象のオブジェクトをtextarea(objectArea)の情報に上書きする
+                dacset.objs = dacset.objs.map(obj => 
+                    obj.label === objset.label ? { ...obj, ...objset } : obj
+                );
+            }else if ( argFlg == "DELETE"){
+                // 対象のオブジェクトをtextarea(objectArea)の情報に基づいて削除する
+                dacset.objs = dacset.objs.filter(obj => obj.label !== objset.label);
+                // 対象オブジェクトを含む接続線からも削除する
+                deleteObjectFromConnect(objset.label);
+            }
+
+            // 再描画の処理
+            objs = dacset["objs"]; // dacsetから図形描画の情報を格納
+            objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
+            connects = dacset["connects"]; // dacsetから接続線の情報を格納
+            firstFlow();  // 構成図を再描画
+        }else{
+            // 接続線の編集モード
+            //-----------------------------------------------------------//
+            objset = JSON.parse(objtext);  // テキストエリアの値を変数に格納
+            let findFlg = "NotFound";
+            let objSerialId;
+            let tmpSerialId;
+            for (let i in objset) {
+                objSerialId = objset[i]["serial-id"];
+                let j = 0;
+                for (let j in connects) {
+                    //console.log(connects[j]);
+                    tmpSerialId = connects[j]["serial-id"];
+
+                    if(tmpSerialId == objSerialId){
+                        findFlg = "HIT";
+                        //connects[j]["serial-id"] = objset[i]["serial-id"];
+                        connects[j] = objset[i];
+                        break;
+                    }
+                }
+                if(findFlg == "NotFound"){
+                    connects.push(objset[i])
+                }
+            }
+            // 再描画の処理
+            firstFlow();  // 構成図を再描画
+            //-----------------------------------------------------------//
         }
-
-        // 再描画の処理
-        objs = dacset["objs"]; // dacsetから図形描画の情報を格納
-        objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
-        connects = dacset["connects"]; // dacsetから接続線の情報を格納
-        firstFlow();  // 構成図を再描画
     }catch (error){
-        alert("エラーが発生しました 関数：loadObjsetFromArea");
+        alert("エラーが発生しました 関数：loadObjsetFromArea："+error);
     }
     recordConsoleLog(recordConsoleLogFlg, "関数 loadObjsetFromArea 終了");
 }
@@ -1386,44 +1636,82 @@ function getRandomNumber(min, max) {
 }
 
 
-function addObject(){
-    // 追加ボタン：オブジェクトを追加する
+function addNewThing(argFlg){
+    // オブジェクト or 接続線を新規に追加する
+    let addTemplate = {};
     addLabel = generateRandomString(18);
-    addX = getRandomNumber(100, 200);
-    addY = getRandomNumber(100, 200);
-    addObj = {
-        "label": addLabel,
-        "ns": "AddedObject",
-        "x": addX,
-        "y": addY,
-        "w": 50,
-        "h": 50,
-        "color": "none",
-        "opacity": "1.0",
-        "group": "gr9999999",
-        "child-layers": [],
-        "child": [],
-        "line": "black",
-        "imgTL": "undefined.png",
-        "imgTR": "NONE",
-        "imgBL": "NONE",
-        "imgBR": "NONE",
-        "imgCE": "NONE",
-        "imgCL": "NONE",
-        "imgCR": "NONE",
-        "imgCT": "NONE",
-        "imgCB": "NONE",
-        "imgSize": 1,
-        "txtPosition": "txtTL",
-        "transFlg": "ON"
-    }
+    if(argFlg == "OBJECT")
+    {
+        // オブジェクトを新規に追加する
+        addX = getRandomNumber(100, 200);
+        addY = getRandomNumber(100, 200);
+        addTemplate = {
+            "label": addLabel,
+            "ns": "AddedObject",
+            "x": addX,
+            "y": addY,
+            "w": 50,
+            "h": 50,
+            "color": "none",
+            "opacity": "1.0",
+            "group": "gr9999999",
+            "child-layers": [],
+            "child": [],
+            "line": "black",
+            "imgTL": "undefined.png",
+            "imgTR": "NONE",
+            "imgBL": "NONE",
+            "imgBR": "NONE",
+            "imgCE": "NONE",
+            "imgCL": "NONE",
+            "imgCR": "NONE",
+            "imgCT": "NONE",
+            "imgCB": "NONE",
+            "imgSize": 1,
+            "txtPosition": "txtTL",
+            "transFlg": "ON"
+        }
 
-    dacset.objs.push(addObj);
-    objs = dacset["objs"]; // dacsetから図形描画の情報を格納
-    objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
-    connects = dacset["connects"]; // dacsetから接続線の情報を格納
-    firstFlow();  // 構成図を再描画
+        dacset.objs.push(addTemplate);
+        objs = dacset["objs"]; // dacsetから図形描画の情報を格納
+        objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
+        connects = dacset["connects"]; // dacsetから接続線の情報を格納
+        firstFlow();  // 構成図を再描画
+    }else if(argFlg == "CONNECT"){
+        // 接続線を新規に追加する
+        addTemplate = [{
+            "serial-id": addLabel,
+            "id": "n999-" + addLabel,
+            "color": "#000000",
+            "opa": 1.0,
+            "aline": 1.0,
+            "cirSize": 1.0,
+            "angle": 0,
+            "lineGap": "1,0",
+            "cirStrokeWidth": 0.05,
+            "edgeEnd": "NONE",
+            "conns": [
+                "INPUT-OBJECT-Label-01",
+                "INPUT-OBJECT-Label-02"
+            ]
+        }];
+
+        const objarea = document.getElementById("objectArea");
+        objarea.value = "";  // クリア
+        objarea.value = JSON.stringify(addTemplate, null, 2);
+
+        // オブジェクト一覧
+        changeDivAreaSize('menuObjectArea', 'WIDE');
+        setInfoArea();
+
+
+
+    }
 }
+
+
+
+
 
 
 document.onmousedown = onmousedownfnc;
@@ -1539,7 +1827,7 @@ function onmousedownfnc(e){
     }
     if(ditectFlg == 0){    //クリックしたところに図形がなった場合
         if (drag.cTarget != false) {
-            initialDragVal(); // drag の初期化           
+            initialDragVal(); // drag の初期化
         }
     }
     recordConsoleLog(recordConsoleLogFlg, "関数 onmousedownfnc 終了");
@@ -1645,6 +1933,9 @@ function initialDragVal(){
     drag.rangeX = null;
     drag.rangeY = null;
     drag.transflg = null;
+
+    renewObjectMode();
+
     recordConsoleLog(recordConsoleLogFlg, "関数 initialDragVal 終了");
 }
 
@@ -1670,7 +1961,6 @@ document.getElementById('file').addEventListener('change', function(event) {
 
                 objs = dacset["objs"]; // dacsetから図形描画の情報を格納
                 connects = dacset["connects"]; // dacsetから接続線の情報を格納
-
                 firstFlow();  // 構成図を再描画
 
             } catch (error) {
@@ -1685,15 +1975,20 @@ document.getElementById('file').addEventListener('change', function(event) {
 });
 
 const container = document.getElementById('menuObjectArea');
-const textarea = document.getElementById('objectArea');
+const objectArea = document.getElementById('objectArea');
+const infoArea = document.getElementById('infoArea');
 
-const resizeTextarea = () => {
-    textarea.style.width = `${container.clientWidth - 20}px`;
-    textarea.style.height = `${container.clientHeight - 50}px`;
+const resizeMenuArea = () => {
+    objectArea.style.width = `${container.clientWidth*0.48}px`;
+    objectArea.style.height = `${container.clientHeight - 200}px`;
+
+    infoArea.style.width = `${container.clientWidth*0.48}px`;
+    infoArea.style.height = `${container.clientHeight - 220}px`;
+
 };
 
-window.addEventListener('resize', resizeTextarea);
-resizeTextarea(); // コード修正のテキスト欄のサイズ変更
+window.addEventListener('resize', resizeMenuArea);
+resizeMenuArea(); // コード修正のテキスト欄のサイズ変更
 
 
 function firstFlow(){
@@ -1736,13 +2031,6 @@ function clearArray(array) {
 
 function setInit(){
     recordConsoleLog(recordConsoleLogFlg, "関数 setInit 開始");
-    /*
-    const svgElement = document.getElementById('svgArea');
-    // 子要素をすべて削除
-    while (svgElement.firstChild) {
-        svgElement.removeChild(svgElement.firstChild);
-    }
-    */
     clearShapes();  // SVGキャンパスをクリア
 
     scale = 1.0;
@@ -1757,6 +2045,8 @@ function setInit(){
     vGap = 10;
 
     initializeDragVariables(drag, nDrag);  // 既存の変数を初期化
+    selectedMode = document.querySelector('select[name="editMode"]').value;
+    renewObjectMode();  // オブジェクトエリアの更新
     recordConsoleLog(recordConsoleLogFlg, "関数 setInit 終了");
 }
 
@@ -2395,29 +2685,195 @@ function changeMenuAreaSize(argArea, argFlg){
 
 
 
+
+function changeDivAreaSize(argArea, argFlg){
+    recordConsoleLog(recordConsoleLogFlg, "関数 changeDivAreaSize 開始");
+    const divarea = document.getElementById(argArea);
+    let loWidth = "";
+    let loHeight = "";
+
+    if(argFlg == "CHANGE"){
+        if(menuAreaFlg == "SMALL"){
+            menuAreaFlg = "WIDE";
+            loWidth = "100%";
+            loHeight = "100%";
+        }else{
+            menuAreaFlg = "SMALL";
+            loWidth = "20%";
+            loHeight = "100%";
+        }
+    }
+
+    if(menuAreaFlg == "WIDE" ){
+        guiOperateFlg = false;  // GUI操作:無効
+    }else{
+        guiOperateFlg = true;  // GUI操作:有効
+    }
+
+    divarea.style.width = loWidth;
+    divarea.style.height = loHeight;
+    recordConsoleLog(recordConsoleLogFlg, "関数 changeDivAreaSize 終了");
+}
+
+
+function setInfoArea(){
+    // オブジェクト一覧表示
+    console.log("関数 setInfoArea()");
+    let infoVal = "";
+    infoVal += makeObjectInfoList();
+
+    // infoAreaにHTMLを反映
+    document.getElementById('infoArea').innerHTML = infoVal;
+}
+
+
+function makeObjectInfoList(){
+    let loStr = "";
+
+    if(infoMode == "objectInfoMode")
+    {
+        loStr += "<ul>";
+        for (let i in objs) {
+            let btnName = "";
+            let tmpns = objs[i]["ns"];
+            let tmplabel = objs[i]["label"];
+            let tmpAiconPath = setImgTag(objs[i]);
+
+            if( tmpns == ""){
+                tmpns = "＜空＞";
+            }
+
+            btnName += tmpns + "<BR />(" + tmplabel + ")";
+
+            loStr += "<button type='button' data-label='"+tmplabel+"' onclick='copyValue2ToClipboard(this)'>";
+            loStr += "<table>";
+            loStr += "<tr>";
+            loStr += "<td>";
+            if(tmpAiconPath != "")
+            {
+                loStr += "<img src='"+ tmpAiconPath +"' width='32px' height='32px'>";
+            }
+            loStr += "</td>";
+            loStr += "<td style='text-align: left;'>";
+            loStr += btnName;
+            loStr += "</td>";
+            loStr += "</table>";
+
+            loStr += "</button>";
+            loStr += "<BR />";
+        }
+        loStr += "</ul>";
+    }
+    return loStr;
+}
+
+
+function copyValue2ToClipboard(argTgt) {
+    const labelVal = argTgt.getAttribute('data-label');
+    console.log(labelVal);
+
+    // 一時的なテキストエリアを作成して、値を選択してコピーする
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = labelVal;
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempTextArea);
+}
+
+function setImgTag(argObj){
+    searchImgElems = ["imgBL","imgBR","imgCB","imgCE","imgCL","imgCR","imgCT","imgTL","imgTR"];
+    imgFile = "";
+    rtnAiconPath = "";
+    for(let i=0; i < searchImgElems.length; i++){
+        if(argObj[searchImgElems[i]].toUpperCase() != "NONE"){
+            imgFile = argObj[searchImgElems[i]];
+            break;
+        }
+    }
+
+    if(imgFile != "")
+    {
+        if (imgFile.startsWith("http")) {
+            // 先頭文字列 'http' の場合
+            rtnAiconPath = imgFile;
+        } else {
+            // 先頭文字列 'http' ではない場合
+            rtnAiconPath = ImgCommonPath + imgFile;
+        }
+    }
+    return rtnAiconPath;
+}
+
+
+
+
+function copyToClipboard(argLabel) {
+    // 指定したオブジェクトのLabelをコピーする
+    //console.log(argLabel);
+ 
+    // コピー対象をJavaScript上で変数として定義する
+    let copyTarget = document.getElementById(argLabel);
+
+    // コピー対象のテキストを選択する
+    copyTarget.select();
+
+    // 選択しているテキストをクリップボードにコピーする
+    document.execCommand("Copy");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function loadDacsetFromArea(){
+    //---- 使わなくなった関数 ----//
     // 反映：textareaからコードを読み取り、変数 dacset に格納する
     recordConsoleLog(recordConsoleLogFlg, "関数 loadDacsetFromArea 開始");
     try{
-        const codearea = document.getElementById('codeArea');
-        const codetext = codearea.value;
-        dacset = JSON.parse(codetext);
+        if(selectedMode == "objectEditMode")
+        {
+            // オブジェクト編集モード
+            const codearea = document.getElementById('codeArea');
+            const codetext = codearea.value;
+            dacset = JSON.parse(codetext);
 
-        if (objs.some(subArray => subArray.length !== 0)) {
-            clearArray(objs);  // objsをクリア
+            if (objs.some(subArray => subArray.length !== 0)) {
+                clearArray(objs);  // objsをクリア
+            }
+
+            if (connects.some(subArray => subArray.length !== 0)) {
+                clearArray(connects);  // connectsをクリア
+            }
+
+            objs = dacset["objs"]; // dacsetから図形描画の情報を格納
+            objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
+            connects = dacset["connects"]; // dacsetから接続線の情報を格納
+
+            guiOperateFlg = true;
+            firstFlow();  // 構成図を再描画
+            guiOperateFlg = false;
+        }else{
+            // 接続線編集モード
+
         }
-
-        if (connects.some(subArray => subArray.length !== 0)) {
-            clearArray(connects);  // connectsをクリア
-        }
-
-        objs = dacset["objs"]; // dacsetから図形描画の情報を格納
-        objs = sortByGroup(objs);  // group要素の値で昇順に並べ替え
-        connects = dacset["connects"]; // dacsetから接続線の情報を格納
-
-        guiOperateFlg = true;
-        firstFlow();  // 構成図を再描画
-        guiOperateFlg = false;
     }catch (error){
         alert("構成図のコードの読み込み時に問題が発生しました。\nJSONの形式が崩れている可能性が考えられます。");
     }
