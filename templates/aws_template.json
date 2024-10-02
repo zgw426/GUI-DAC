@@ -1,0 +1,73 @@
+{
+    "rule": "2024-03-31",
+    "templates": [
+        {
+            "label": "AWS",
+            "ns": "0123456789",
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100,
+            "color": "none",
+            "opacity": "1.0",
+            "group": "gr101",
+            "child-layers": [
+              "gr102",
+              "gr103",
+              "gr104",
+              "gr105"
+            ],
+            "child": [],
+            "line": "#000000",
+            "imgTL": "aws.png",
+            "imgTR": "NONE",
+            "imgBL": "NONE",
+            "imgBR": "NONE",
+            "imgCE": "NONE",
+            "imgCL": "NONE",
+            "imgCR": "NONE",
+            "imgCT": "NONE",
+            "imgCB": "NONE",
+            "imgSize": 1,
+            "txtPosition": "txtTL",
+            "transFlg": "ON",
+            "info": {
+                "ResourceName": "AWS"
+            }
+          },
+          {
+            "label": "VPC",
+            "ns": "vpc",
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100,
+            "color": "none",
+            "opacity": "1.0",
+            "group": "gr102",
+            "child-layers": [
+              "gr103",
+              "gr104",
+              "gr105"
+            ],
+            "child": [
+            ],
+            "line": "#8C4FFF",
+            "imgTL": "vpc.png",
+            "imgTR": "NONE",
+            "imgBL": "NONE",
+            "imgBR": "NONE",
+            "imgCE": "NONE",
+            "imgCL": "NONE",
+            "imgCR": "NONE",
+            "imgCT": "NONE",
+            "imgCB": "NONE",
+            "imgSize": 1,
+            "txtPosition": "txtTL",
+            "transFlg": "ON",
+            "info": {
+                "ResourceName": "VPC"
+            }
+          }
+    ]
+}

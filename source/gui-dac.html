@@ -40,7 +40,7 @@ body, html {
 
 
 .menuObjectArea {
-    width: 20%;
+    width: 40%;
     height: 100%;
     background-color: rgba(128, 128, 128, 0.5);
     position: absolute; /* Position the div within the SVG area */
@@ -52,7 +52,7 @@ body, html {
     padding-right: 10px; /* 右側のインデント */
     padding-top: 10px; /* 上側のインデント */
     padding-bottom: 10px; /* 下側のインデント */
-    text-align: right; /* 右揃え */
+    text-align: left;
 }
 
 
@@ -133,20 +133,39 @@ textarea {
     align-items: flex-start; /* 高さを揃えたい場合に使用 */
 }
 
+
 #infoArea {
-    width: 49%;
+    width: 100%;
     height: 100px;
     background-color: lightgray;
     padding: 2%;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: scroll;
     text-align: left;
 }
 
 #objectArea {
-    width: 49%;
+    width: 100%;
     height: 10%;
 }
+
+#object-list {
+    width: 100%;
+    height: 32px;
+    background-color: lightblue;
+    text-align: center;
+}
+
+#template-list {
+    width: 100%;
+    height: 32px;
+    background-color: gray;
+    text-align: center;
+}
+
+
+
+
 
 
 
@@ -158,128 +177,68 @@ textarea {
 </head>
 <body>
 
-<!--
-<div class="menuArea" id="menuArea">
-    <input class="styled" type="button" value="ファイルを出力" onClick="outputJsonFile();" />
-    <input type="file" id="file" accept="application/json">
-    <input class="styled" type="button" value="オブジェクト追加" onClick="addObject();" />
-
-</div>
--->
-
-<!--
-<div class="menuObjectArea" id="menuObjectArea">
-    <input class="styled" type="button" value="窓サイズ" onClick="changeDivAreaSize('menuObjectArea', 'CHANGE');" />
-    <input type="file" id="file" accept="application/json">
-    <input class="styled" type="button" value="ファイルを出力" onClick="addObject();" />
-    <select name="editMode" onClick="renewObjectMode()">
-        <option value="objectEditMode">オブジェクト編集モード</option>
-        <option value="connectEditMode">接続線の編集モード</option>
-    </select>
-    <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea('RENEW');" />
-    <BR />
-    <div id="menuOptionArea"></div>
-    <BR />
-    <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
-    <BR />
-    <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
-</div>
--->
-
-<!--
-<div class="menuObjectArea" id="menuObjectArea">
-
-<table border="1" cellspacing="0" cellpadding="5" width="100%">
-
-<tr>
-    <td colspan="2">
-        <input class="styled" type="button" value="窓サイズ" onClick="changeDivAreaSize('menuObjectArea', 'CHANGE');" />
-        <input type="file" id="file" accept="application/json">
-        <input class="styled" type="button" value="ファイルを出力" onClick="addObject();" />
-    </td>
-    <td></td>
-</tr>
-
-
-<tr>
-    <td>
-        <select name="editMode" onClick="renewObjectMode()">
-            <option value="objectEditMode">オブジェクト編集モード</option>
-            <option value="connectEditMode">接続線の編集モード</option>
-        </select>
-    </td>
-    <td>
-        <select name="editMode" onClick="renewObjectMode()">
-            <option value="objectEditMode">Aオブジェクト編集モード</option>
-            <option value="connectEditMode">A接続線の編集モード</option>
-        </select>
-    </td>
-
-</tr>
-
-<tr>
-    <td>
-        <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea('RENEW');" />
-    </td>
-    <td>
-        <div id="menuOptionArea"></div>
-    </td>
-</tr>
-
-<tr>
-    <td style="text-align: left; vertical-align: top;">
-        <div id="infoArea">ddddd--dd</div>
-    </td>
-    <td>
-        <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
-    </td>
-</tr>
-
-<tr>
-    <td></td>
-    <td>
-        <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
-    </td>
-</tr>
-
-</table>
-
-
-</div>
--->
-
-
 
 <!-- -->
 <div class="menuObjectArea" id="menuObjectArea">
-    <input class="styled" type="button" value="窓サイズ" onClick="changeDivAreaSize('menuObjectArea', 'CHANGE');" />
-    <input type="file" id="file" accept="application/json">
-    <input class="styled" type="button" value="ファイルを出力" onClick="addObject();" />
 
-    <select name="infoMode" onClick="renewInfoMode()">
-        <option value="objectInfoMode">オブジェクト一覧</option>
-        <option value="aiconInfoMode">アイコン一覧</option>
-    </select>
-
-    <select name="editMode" onClick="renewObjectMode()">
-        <option value="objectEditMode">オブジェクト編集モード</option>
-        <option value="connectEditMode">接続線の編集モード</option>
-    </select>
-
+<table>
+    <tr>
+        <td>構成図データ</td><td><input type="file" id="DiagramFile" accept="application/json"></td>
+    </tr>
+    <tr>
+        <td>テンプレートデータ</td><td><input type="file" id="TemplateFile" accept="application/json"></td>
+    </tr>
+    <tr>
+        <td>構成図ファイル出力</td><td><input class="styled" type="button" value="ファイルを出力" onClick="addObject();" /></td>
+    </tr>
+</table>
 
 
-    <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea('RENEW');" />
-    <BR />
-    <div id="menuOptionArea"></div>
-    <BR />
+<table border="0">
+    <tr>
+        <td style="vertical-align: top; padding: 10px;">
+            <div class='container'>
+                <div id='object-list' onClick="setDivColor('object-list');">オブジェクト一覧</div>
+                <div id='template-list' onClick="setDivColor('template-list');">テンプレート一覧</div>
+            </div>
+        </td>
+        <td style="vertical-align: top; padding: 10px;">
+            いいいいいいいい
 
-    <div class="container">
-        <div id="infoArea">オブジェクト一覧をリスト表示するところ</div>
-        <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
-    </div>
+            <select name="editMode" onClick="renewObjectMode()">
+                <option value="objectEditMode">オブジェクト編集モード</option>
+                <option value="connectEditMode">接続線の編集モード</option>
+            </select>
 
-    <BR />
-    <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
+            <div id="menuEditArea">
+                <input class="styled" type="button" value="反映" onClick="loadObjsetFromArea('RENEW');" />
+                <div id="menuOptionArea"></div>
+            </div>
+
+
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top; padding: 10px;">
+            <div>
+                <div id="infoArea">オブジェクト一覧およびテンプレート一覧をリスト表示するところ</div>
+            </div>
+        </td>
+        <td style="vertical-align: top; padding: 10px;">
+            <div>
+                <textarea rows="30" cols="36" id="objectArea" style="font-size: 18px;"></textarea>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top; padding: 10px;">
+        </td>
+        <td style="vertical-align: top; padding: 10px;">
+            <input class="styled" type="button" value="削除" onClick="loadObjsetFromArea('DELETE');" />
+        </td>
+    </tr>
+</table>
+
 </div>
 <!-- -->
 
@@ -327,6 +286,27 @@ let infoMode = 'objectInfoMode';  // infoエリアのモード [objectInfoMode|a
 
 
 
+
+//const container = document.getElementById('menuObjectArea');
+const menuObjectArea = document.getElementById('menuObjectArea');
+
+
+const objectArea = document.getElementById('objectArea');
+const infoArea = document.getElementById('infoArea');
+//const menuInfoArea = document.getElementById('menuInfoArea');
+const menuEditArea = document.getElementById('menuEditArea');
+//const divObj = document.getElementById("object-list");
+//const divTemplate = document.getElementById("template-list");
+
+
+
+
+
+
+
+
+
+
 dacsetRuleVersion = "2024-03-31";
 
 
@@ -334,7 +314,7 @@ dacsetRuleVersion = "2024-03-31";
 // 四角形に配置するアイコン画像の配置場所
 let aiconPositions = ["imgTL","imgTR","imgBL","imgBR","imgCE","imgCL","imgCR","imgCT","imgCB"];
 
-//let movedObjs = [];
+let templateset = {};  // オブジェクトのテンプレート
 
 // 構成図に関する情報をここに全て書く
 let dacset = {
@@ -567,9 +547,9 @@ function renewObjectMode(){
 
 
 function renewInfoMode(){
-    infoMode = document.querySelector('select[name="editMode"]').value;
+    infoMode = document.querySelector('select[name="infoMode"]').value;
     // [objectInfoMode|aiconInfoMode]
-    //console.log(infoMode);
+    console.log(infoMode);
 }
 
 
@@ -939,6 +919,7 @@ function moveOptionFlow(tgtId){
 
 
 // 昇順に並べ替える関数
+/*
 function sortByGroup(data) {
     return data.sort((a, b) => {
         if (a.group < b.group) {
@@ -950,6 +931,40 @@ function sortByGroup(data) {
         return 0;
     });
 }
+*/
+
+
+// 昇順に並べ替える関数
+function sortByGroup(data) {
+    return data.sort((a, b) => {
+        // まずgroupで比較
+        if (a.group < b.group) {
+            return -1;
+        }
+        if (a.group > b.group) {
+            return 1;
+        }
+        // groupが同じ場合はnsで比較
+        if (a.ns < b.ns) {
+            return -1;
+        }
+        if (a.ns > b.ns) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 function moveConnectFlow(argId){
@@ -1940,7 +1955,7 @@ function initialDragVal(){
 }
 
 
-document.getElementById('file').addEventListener('change', function(event) {
+document.getElementById('DiagramFile').addEventListener('change', function(event) {
     // 読み込んだJSONファイルから構成図を描画する
     const file = event.target.files[0];
     if (file) {
@@ -1974,18 +1989,80 @@ document.getElementById('file').addEventListener('change', function(event) {
 
 });
 
-const container = document.getElementById('menuObjectArea');
-const objectArea = document.getElementById('objectArea');
-const infoArea = document.getElementById('infoArea');
+
+
+
+
+
+
+
+
+
+document.getElementById('TemplateFile').addEventListener('change', function(event) {
+    // 読み込んだJSONファイルからテンプレート一覧を表示する
+    let tmps = "";
+    const file = event.target.files[0];
+    if (file) {
+        //const codearea = document.getElementById("codeArea");
+        let nowDacset;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const jsonContent = e.target.result;
+            try {
+                templateset = JSON.parse(jsonContent);
+
+                console.log(templateset["templates"]);
+
+                for (let tmpno in templateset["templates"]) {
+                    console.log(templateset["templates"][tmpno]);
+                }
+
+
+            } catch (error) {
+                console.error("JSONの解析中にエラーが発生しました:", error);
+            }
+        };
+        reader.readAsText(file);
+
+        //codearea.value = JSON.stringify(dacset, null, 2);  // textareaにコード(dacset)を登録
+    }
+
+});
+
+
+
+function setTemplateButton(argTmp){
+    // テンプレートボタンを作る
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const resizeMenuArea = () => {
-    objectArea.style.width = `${container.clientWidth*0.48}px`;
-    objectArea.style.height = `${container.clientHeight - 200}px`;
 
-    infoArea.style.width = `${container.clientWidth*0.48}px`;
-    infoArea.style.height = `${container.clientHeight - 220}px`;
+    //menuInfoArea.style.width = `${menuObjectArea.clientWidth*0.40}px`;
+    menuEditArea.style.width = `${menuObjectArea.clientWidth*0.60}px`;
+
+    infoArea.style.width = `${menuObjectArea.clientWidth*0.40}px`;
+    infoArea.style.height = `${menuObjectArea.clientHeight - 216 -300}px`;
+    objectArea.style.width = `${menuObjectArea.clientWidth*0.50}px`;
+    objectArea.style.height = `${menuObjectArea.clientHeight - 200 -300}px`;
 
 };
+
 
 window.addEventListener('resize', resizeMenuArea);
 resizeMenuArea(); // コード修正のテキスト欄のサイズ変更
@@ -2010,6 +2087,10 @@ function firstFlow(){
     ///////////////////////
     // 接続線を描画するフロー
     addConnectFlow();
+
+    // オブジェクト一覧を表示
+    setInfoArea('object-list');
+    //setDivColor('object-list');
 
     recordConsoleLog(recordConsoleLogFlg, "関数 firstFlow 終了");
 }
@@ -2716,15 +2797,46 @@ function changeDivAreaSize(argArea, argFlg){
 }
 
 
-function setInfoArea(){
+function setInfoArea(argFlg){
     // オブジェクト一覧表示
     console.log("関数 setInfoArea()");
     let infoVal = "";
-    infoVal += makeObjectInfoList();
+
+    if(argFlg == "object-list"){
+        infoVal += makeObjectInfoList();
+    }else if(argFlg == "template-list"){
+        infoVal += makeObjectInfoList();
+    }
+
+
 
     // infoAreaにHTMLを反映
     document.getElementById('infoArea').innerHTML = infoVal;
 }
+
+
+function setDivColor(argVal){
+    const divObj = document.getElementById("object-list");
+    const divTemplate = document.getElementById("template-list");
+
+    if( argVal == "object-list" ){
+        divObj.style.backgroundColor = "lightblue";
+        divTemplate.style.backgroundColor = "gray";
+    }else{
+        divTemplate.style.backgroundColor = "lightblue";
+        divObj.style.backgroundColor = "gray";
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 function makeObjectInfoList(){
@@ -2760,7 +2872,7 @@ function makeObjectInfoList(){
             loStr += "</table>";
 
             loStr += "</button>";
-            loStr += "<BR />";
+            loStr += " <WBR />";
         }
         loStr += "</ul>";
     }
