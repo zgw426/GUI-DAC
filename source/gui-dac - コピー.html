@@ -149,14 +149,14 @@ textarea {
     height: 10%;
 }
 
-#objectInfoMode {
+#object-list {
     width: 100%;
     height: 32px;
     background-color: lightblue;
     text-align: center;
 }
 
-#templateInfoMode {
+#template-list {
     width: 100%;
     height: 32px;
     background-color: gray;
@@ -197,8 +197,8 @@ textarea {
     <tr>
         <td style="vertical-align: top; padding: 10px;">
             <div class='container'>
-                <div id='objectInfoMode' onClick="setDivColor('objectInfoMode');">オブジェクト一覧</div>
-                <div id='templateInfoMode' onClick="setDivColor('templateInfoMode');">テンプレート一覧</div>
+                <div id='object-list' onClick="setDivColor('object-list');">オブジェクト一覧</div>
+                <div id='template-list' onClick="setDivColor('template-list');">テンプレート一覧</div>
             </div>
         </td>
         <td style="vertical-align: top; padding: 10px;">
@@ -281,7 +281,7 @@ let lineHightLight;  // 接続線のハイライト機能の有効(ON)／無効�
 let outputJsonFileName;  // 構成図コードのファイル名
 
 let selectedMode = 'objectEditMode';  // テキストエリアの編集モード
-let infoMode = 'objectInfoMode';  // infoエリアのモード [objectInfoMode|templateInfoMode]
+let infoMode = 'objectInfoMode';  // infoエリアのモード [objectInfoMode|aiconInfoMode]
 
 
 
@@ -294,8 +294,8 @@ const objectArea = document.getElementById('objectArea');
 const infoArea = document.getElementById('infoArea');
 //const menuInfoArea = document.getElementById('menuInfoArea');
 const menuEditArea = document.getElementById('menuEditArea');
-//const divObj = document.getElementById("objectInfoMode");
-//const divTemplate = document.getElementById("templateInfoMode");
+//const divObj = document.getElementById("object-list");
+//const divTemplate = document.getElementById("template-list");
 
 
 
@@ -547,7 +547,7 @@ function renewObjectMode(){
 
 function renewInfoMode(){
     infoMode = document.querySelector('select[name="infoMode"]').value;
-    // [objectInfoMode|templateInfoMode]
+    // [objectInfoMode|aiconInfoMode]
     console.log(infoMode);
 }
 
@@ -1339,7 +1339,7 @@ document.onmouseup = function () {
     }
 	drag.target = null;
     showInfoToObjectArea();  // objectArea に選択した図形の情報を表示
-    setInfoArea(infoMode);  // オブジェクト一覧表示
+    setInfoArea();  // オブジェクト一覧表示
     recordConsoleLog(recordConsoleLogFlg, "関数 document.onmouseup 終了");
 }
 
@@ -1716,7 +1716,7 @@ function addNewThing(argFlg){
 
         // オブジェクト一覧
         changeDivAreaSize('menuObjectArea', 'WIDE');
-        setInfoArea(infoMode);
+        setInfoArea();
 
 
 
@@ -2088,8 +2088,8 @@ function firstFlow(){
     addConnectFlow();
 
     // オブジェクト一覧を表示
-    setInfoArea(infoMode);
-    //setDivColor('objectInfoMode');
+    setInfoArea('object-list');
+    //setDivColor('object-list');
 
     recordConsoleLog(recordConsoleLogFlg, "関数 firstFlow 終了");
 }
@@ -2801,9 +2801,9 @@ function setInfoArea(argFlg){
     console.log("関数 setInfoArea()");
     let infoVal = "";
 
-    if(argFlg == "objectInfoMode"){
+    if(argFlg == "object-list"){
         infoVal += makeObjectInfoList();
-    }else if(argFlg == "templateInfoMode"){
+    }else if(argFlg == "template-list"){
         infoVal += makeObjectInfoList();
     }
 
@@ -2815,10 +2815,10 @@ function setInfoArea(argFlg){
 
 
 function setDivColor(argVal){
-    const divObj = document.getElementById("objectInfoMode");
-    const divTemplate = document.getElementById("templateInfoMode");
+    const divObj = document.getElementById("object-list");
+    const divTemplate = document.getElementById("template-list");
 
-    if( argVal == "objectInfoMode" ){
+    if( argVal == "object-list" ){
         divObj.style.backgroundColor = "lightblue";
         divTemplate.style.backgroundColor = "gray";
     }else{
